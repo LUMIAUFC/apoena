@@ -30,6 +30,7 @@
   --font-display: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
   --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-data: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --content-max: 72rem;
   --r-sm: 8px; --r: 12px; --r-lg: 16px;
   --gutter-l: max(16px, env(safe-area-inset-left, 0px));
   --gutter-r: max(16px, env(safe-area-inset-right, 0px));
@@ -37,13 +38,13 @@
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
-body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 1rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-.wrap { max-width: 48rem; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 0 3rem; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: var(--content-max); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 0 3rem; }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; text-wrap: balance; margin: 0; letter-spacing: -.01em; }
-h1 { font-size: clamp(1.65rem, 4.6vw, 2.35rem); font-weight: 700; letter-spacing: -.02em; }
+h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; letter-spacing: -.02em; }
 h1:focus { outline: none; }
 h1:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
-h2 { font-size: 1.15rem; }
+h2 { font-size: 1.25rem; }
 h3 { font-size: 1rem; margin-top: .5rem; }
 p { margin: 0; }
 a { color: var(--accent); text-underline-offset: 2px; }
@@ -62,17 +63,17 @@ a { color: var(--accent); text-underline-offset: 2px; }
 
 /* Faixa de marca (BrandBar) */
 .brandbar { background: var(--band); color: var(--band-ink); }
-.brandbar-inner { max-width: 48rem; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: .9rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.brandbar-inner { max-width: var(--content-max); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: .9rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .brandbar .logos { display: flex; align-items: center; gap: .9rem; min-width: 0; }
-.brandbar img { height: 46px; width: auto; display: block; max-width: 100%; }
+.brandbar img { height: 84px; width: auto; display: block; max-width: 100%; }
 .brandbar .ufc-plate { background: #FFFFFF; border-radius: var(--r-sm); padding: 6px 9px; display: block; flex: none; }
-.brandbar img.logo-ufc { height: 69px; }
-.brandbar .logo-sep { width: 1px; height: 34px; background: color-mix(in srgb, var(--band-ink) 28%, transparent); flex: none; }
-.brandbar .tag { font-family: var(--font-display); font-weight: 700; font-size: 1rem; letter-spacing: .18em; color: var(--band-ink); }
+.brandbar img.logo-ufc { height: 84px; }
+.brandbar .logo-sep { width: 1px; height: 60px; background: color-mix(in srgb, var(--band-ink) 28%, transparent); flex: none; }
+.brandbar .tag { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: .18em; color: var(--band-ink); }
 @media (max-width: 30rem) {
   .brandbar .logos { gap: .65rem; }
-  .brandbar img.logo-lumia { height: 36px; }
-  .brandbar img.logo-ufc { height: 56px; }
+  .brandbar img.logo-lumia { height: 50px; }
+  .brandbar img.logo-ufc { height: 58px; }
   .brandbar .ufc-plate { padding: 5px 7px; }
   .brandbar .tag { font-size: .85rem; }
 }
@@ -80,8 +81,8 @@ a { color: var(--accent); text-underline-offset: 2px; }
 
 /* Navegação */
 .nav { background: var(--surface); border-bottom: 1px solid var(--line); }
-.nav ul { list-style: none; margin: 0 auto; max-width: 48rem; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 0; display: flex; flex-wrap: wrap; gap: 0 .25rem; }
-.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 .7rem; color: var(--muted); font-weight: 600; font-size: .9rem; text-decoration: none; border-bottom: 3px solid transparent; }
+.nav ul { list-style: none; margin: 0 auto; max-width: var(--content-max); padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 0; display: flex; flex-wrap: wrap; gap: 0 .25rem; }
+.nav a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 .9rem; color: var(--muted); font-weight: 600; font-size: 1rem; text-decoration: none; border-bottom: 3px solid transparent; }
 .nav a:hover { color: var(--ink); }
 .nav a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
 .nav li:first-child a { padding-left: 0; }
@@ -89,7 +90,8 @@ a { color: var(--accent); text-underline-offset: 2px; }
 /* Cabeçalho de página */
 .masthead { padding-block: 2.25rem 1.5rem; display: grid; gap: .75rem; }
 .masthead.compacta { padding-block: 1.25rem 1.25rem; }
-.lede { color: var(--muted); max-width: 38rem; font-size: 1.05rem; }
+.lede { color: var(--muted); max-width: 52rem; font-size: 1.15rem; }
+section.block > p, .orientacao > p, .faq p { max-width: 62rem; }
 
 /* Indicador de etapas (ProgressMeter) */
 .etapas { display: flex; align-items: center; gap: 1rem; padding-block: 1rem .25rem; }
@@ -114,7 +116,7 @@ a { color: var(--accent); text-underline-offset: 2px; }
 section.block { display: grid; gap: 1rem; margin-bottom: 2.5rem; }
 .block-head { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; flex-wrap: wrap; padding-bottom: .6rem; border-bottom: 1px solid var(--line); }
 .lista { margin: 0; padding-left: 1.2rem; display: grid; gap: .4rem; }
-.passos { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.passos { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem 2rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
 .passos li { display: grid; grid-template-columns: auto 1fr; gap: .9rem; align-items: start; }
 .passos li > div { min-width: 0; }
 .num { font-family: var(--font-data); font-size: .85rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: .15rem .6rem; margin-top: .1rem; }
@@ -130,10 +132,11 @@ section.block { display: grid; gap: 1rem; margin-bottom: 2.5rem; }
 dl.info, dl.lei { margin: 0; display: grid; gap: 1rem; }
 dl.info dt, dl.lei dt { font-family: var(--font-display); font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 dl.info dd, dl.lei dd { margin: .2rem 0 0; }
+@media (min-width: 56rem) { .painel dl.info { grid-template-columns: 1fr 1fr; gap: 1.25rem 2.5rem; } }
 dl.lei div { display: grid; grid-template-columns: 4.5rem 1fr; gap: .75rem; align-items: baseline; }
 dl.lei dt { font-family: var(--font-data); font-size: .85rem; letter-spacing: 0; text-transform: none; color: var(--accent); }
 dl.lei dd { margin: 0; }
-.duas-colunas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 1.5rem; align-items: start; }
+.duas-colunas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 1.5rem; align-items: start; }
 @media (max-width: 40rem) { .duas-colunas { grid-template-columns: 1fr; } }
 
 /* Esquema da lâmina */
@@ -212,7 +215,7 @@ fieldset.has-error .opcao { border-color: var(--danger); }
 
 /* Rodapé */
 .sitefoot { border-top: 1px solid var(--line); }
-.sitefoot-inner { max-width: 48rem; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 1.25rem 2rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; font-size: .8rem; color: var(--muted); }
+.sitefoot-inner { max-width: var(--content-max); margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 1.25rem 2rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; font-size: .8rem; color: var(--muted); }
 .sitefoot strong { font-family: var(--font-display); color: var(--ink); letter-spacing: .04em; }
 .sitefoot a { font-weight: 700; }
 
