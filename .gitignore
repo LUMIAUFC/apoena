@@ -1,0 +1,13 @@
+# Versão para pré-visualização no claude.ai (gerada pelo build.py)
+dist/preview.html
+
+# Sistema operacional e editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+__pycache__/
+
+# Credenciais
+.env
+.env.*

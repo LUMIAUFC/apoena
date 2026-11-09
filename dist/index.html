@@ -1,0 +1,1359 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>APOENA</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="APOENA: identificação inicial de possíveis artefatos arqueológicos e orientações de educação patrimonial. LUMIA · UFC Campus Quixadá.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3c1.2 6.6 6.4 11.8 13 13-6.6 1.2-11.8 6.4-13 13-1.2-6.6-6.4-11.8-13-13 6.6-1.2 11.8-6.4 13-13z' fill='%23A06CE0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Montserrat:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
+<style>
+/* APOENA — estilos com a identidade visual do LUMIA (Design System LUMIA)
+   Layout: faixa de marca com o fio em degradê, navegação logo abaixo, coluna única de leitura
+   (máx. 48rem), cartões só onde há um objeto a destacar. Violeta, amarelo e ciano são cores de
+   marca; o violeta profundo (--accent) é o tom com contraste AA para texto e botões. */
+:root {
+  --brand-violet: #A06CE0;
+  --brand-yellow: #F8C03C;
+  --brand-cyan: #1CC2DA;
+  --band: #16112A;
+  --band-ink: #EDE8F8;
+  --paper: #F7F5FB;
+  --surface: #FFFFFF;
+  --ink: #1E1830;
+  --muted: #5D5672;
+  --line: #E4DFEE;
+  --accent: #6A3FC0;
+  --on-accent: #FFFFFF;
+  --accent-soft: #F1EBFC;
+  --danger: #B3261E;
+  --danger-soft: #FCEEEC;
+  --ok: #1D7A55;
+  --focus: #0E8FA3;
+  --warn-soft: #FFF6DF;
+  --warn-edge: #8A5A00;
+  --stone: #8C8396;
+  --stone-edge: #4B4458;
+  --shadow: 0 1px 2px rgba(30, 24, 48, .05), 0 6px 20px -8px rgba(30, 24, 48, .12);
+  --grad: linear-gradient(90deg, var(--brand-violet), var(--brand-yellow) 55%, var(--brand-cyan));
+  --font-display: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: "Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-data: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --r-sm: 8px; --r: 12px; --r-lg: 16px;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --band: #0D0A18; --paper: #120F1C; --surface: #1B1729; --ink: #ECE8F5; --muted: #A69FBB; --line: #2E2843;
+    --accent: #C3A4F4; --on-accent: #1A1030; --accent-soft: #2A2145; --danger: #F2958B; --danger-soft: #3B2024;
+    --ok: #6FD3A6; --focus: #5FDCEB; --warn-soft: #33290F; --warn-edge: #F8C03C; --stone: #6E6680; --stone-edge: #C9C2D8;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -10px rgba(0, 0, 0, .5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --band: #0D0A18; --paper: #120F1C; --surface: #1B1729; --ink: #ECE8F5; --muted: #A69FBB; --line: #2E2843;
+  --accent: #C3A4F4; --on-accent: #1A1030; --accent-soft: #2A2145; --danger: #F2958B; --danger-soft: #3B2024;
+  --ok: #6FD3A6; --focus: #5FDCEB; --warn-soft: #33290F; --warn-edge: #F8C03C; --stone: #6E6680; --stone-edge: #C9C2D8;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -10px rgba(0, 0, 0, .5);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 1rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 48rem; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 0 3rem; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; text-wrap: balance; margin: 0; letter-spacing: -.01em; }
+h1 { font-size: clamp(1.65rem, 4.6vw, 2.35rem); font-weight: 700; letter-spacing: -.02em; }
+h1:focus { outline: none; }
+h1:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+h2 { font-size: 1.15rem; }
+h3 { font-size: 1rem; margin-top: .5rem; }
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.muted { color: var(--muted); }
+.small { font-size: .875rem; }
+.data { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.label-caps { font-family: var(--font-display); font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font-display); font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.estrela { width: .8rem; height: .8rem; fill: var(--brand-violet); flex: none; }
+
+/* Pular para o conteúdo */
+.pular { position: absolute; left: var(--gutter-l); top: -4rem; z-index: 100; background: var(--surface); color: var(--accent); padding: .6rem 1rem; border-radius: var(--r-sm); font-weight: 700; }
+.pular:focus { top: calc(.5rem + env(safe-area-inset-top, 0px)); }
+
+/* Faixa de marca (BrandBar) */
+.brandbar { background: var(--band); color: var(--band-ink); }
+.brandbar-inner { max-width: 48rem; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: .9rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.brandbar .logos { display: flex; align-items: center; gap: .9rem; min-width: 0; }
+.brandbar img { height: 46px; width: auto; display: block; max-width: 100%; }
+.brandbar .ufc-plate { background: #FFFFFF; border-radius: var(--r-sm); padding: 6px 9px; display: block; flex: none; }
+.brandbar img.logo-ufc { height: 69px; }
+.brandbar .logo-sep { width: 1px; height: 34px; background: color-mix(in srgb, var(--band-ink) 28%, transparent); flex: none; }
+.brandbar .tag { font-family: var(--font-display); font-weight: 700; font-size: 1rem; letter-spacing: .18em; color: var(--band-ink); }
+@media (max-width: 30rem) {
+  .brandbar .logos { gap: .65rem; }
+  .brandbar img.logo-lumia { height: 36px; }
+  .brandbar img.logo-ufc { height: 56px; }
+  .brandbar .ufc-plate { padding: 5px 7px; }
+  .brandbar .tag { font-size: .85rem; }
+}
+.brandline { height: 3px; background: var(--grad); }
+
+/* Navegação */
+.nav { background: var(--surface); border-bottom: 1px solid var(--line); }
+.nav ul { list-style: none; margin: 0 auto; max-width: 48rem; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 0; display: flex; flex-wrap: wrap; gap: 0 .25rem; }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 .7rem; color: var(--muted); font-weight: 600; font-size: .9rem; text-decoration: none; border-bottom: 3px solid transparent; }
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
+.nav li:first-child a { padding-left: 0; }
+
+/* Cabeçalho de página */
+.masthead { padding-block: 2.25rem 1.5rem; display: grid; gap: .75rem; }
+.masthead.compacta { padding-block: 1.25rem 1.25rem; }
+.lede { color: var(--muted); max-width: 38rem; font-size: 1.05rem; }
+
+/* Indicador de etapas (ProgressMeter) */
+.etapas { display: flex; align-items: center; gap: 1rem; padding-block: 1rem .25rem; }
+.etapas-texto { font-size: .875rem; white-space: nowrap; color: var(--muted); }
+.etapas-texto strong { font-family: var(--font-data); font-weight: 500; color: var(--ink); }
+.meter { flex: 1; height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; min-width: 0; }
+.meter > span { display: block; height: 100%; background: var(--grad); background-size: 100vw 100%; width: var(--pct, 0%); border-radius: 999px; transition: width .25s ease; }
+@media (max-width: 26rem) { .etapas { flex-wrap: wrap; gap: .4rem; } .meter { flex-basis: 100%; } }
+
+/* Avisos (Notice) */
+.notice { border: 1px solid var(--line); background: var(--surface); border-radius: var(--r); padding: 1rem 1.15rem; display: grid; gap: .5rem; margin-bottom: 1.5rem; }
+.notice h2 { font-family: var(--font-body); font-size: 1rem; font-weight: 700; letter-spacing: 0; }
+.notice ul { margin: 0; padding-left: 1.2rem; }
+.notice.info { border-left: 4px solid var(--brand-cyan); }
+.notice.erro { border-left: 4px solid var(--danger); background: var(--danger-soft); }
+.notice.erro:focus { outline: 3px solid var(--focus); outline-offset: 2px; }
+.notice.alerta { border: 1px solid color-mix(in srgb, var(--warn-edge) 40%, var(--line)); border-left: 4px solid var(--warn-edge); background: var(--warn-soft); }
+.notice.demo { border-style: dashed; background: transparent; }
+.selo { display: inline-block; justify-self: start; font-family: var(--font-data); font-size: .75rem; color: var(--muted); border: 1px dashed var(--line); border-radius: 999px; padding: .1rem .6rem; }
+
+/* Blocos e listas */
+section.block { display: grid; gap: 1rem; margin-bottom: 2.5rem; }
+.block-head { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; flex-wrap: wrap; padding-bottom: .6rem; border-bottom: 1px solid var(--line); }
+.lista { margin: 0; padding-left: 1.2rem; display: grid; gap: .4rem; }
+.passos { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.passos li { display: grid; grid-template-columns: auto 1fr; gap: .9rem; align-items: start; }
+.passos li > div { min-width: 0; }
+.num { font-family: var(--font-data); font-size: .85rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: .15rem .6rem; margin-top: .1rem; }
+.links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.link-card { display: grid; gap: .35rem; padding: 1.1rem 1.15rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); text-decoration: none; color: var(--ink); box-shadow: var(--shadow); transition: border-color .15s; }
+.link-card strong { color: var(--accent); font-family: var(--font-display); font-weight: 600; }
+.link-card:hover { border-color: var(--accent); }
+.cartao { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 1.15rem; display: grid; gap: 1rem; box-shadow: var(--shadow); margin-bottom: 1.5rem; }
+.cartao.local { box-shadow: none; margin-bottom: 0; }
+.cartao.has-error { border-color: var(--danger); border-width: 2px; }
+
+/* Legislação e informações */
+dl.info, dl.lei { margin: 0; display: grid; gap: 1rem; }
+dl.info dt, dl.lei dt { font-family: var(--font-display); font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+dl.info dd, dl.lei dd { margin: .2rem 0 0; }
+dl.lei div { display: grid; grid-template-columns: 4.5rem 1fr; gap: .75rem; align-items: baseline; }
+dl.lei dt { font-family: var(--font-data); font-size: .85rem; letter-spacing: 0; text-transform: none; color: var(--accent); }
+dl.lei dd { margin: 0; }
+.duas-colunas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 1.5rem; align-items: start; }
+@media (max-width: 40rem) { .duas-colunas { grid-template-columns: 1fr; } }
+
+/* Esquema da lâmina */
+.esquema { margin: 0; display: grid; gap: .5rem; }
+.esquema svg { width: 100%; max-width: 22rem; height: auto; }
+.esquema .pedra { fill: var(--stone); stroke: var(--stone-edge); stroke-width: 2; }
+.esquema .gume { fill: none; stroke: var(--brand-cyan); stroke-width: 4; stroke-linecap: round; }
+.esquema .guia { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.esquema .rot { fill: var(--ink); font-family: var(--font-display); font-size: 13px; font-weight: 600; }
+.esquema .rot.sub { fill: var(--muted); font-weight: 400; }
+
+/* Botões (Button) */
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+button, .btn { font: inherit; font-weight: 600; font-size: .925rem; cursor: pointer; border-radius: 999px; padding: .65rem 1.25rem; min-height: 44px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; text-align: center; transition: border-color .15s, background-color .15s; }
+button:hover, .btn:hover { border-color: var(--accent); color: var(--accent); }
+button.primary, .btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); padding-inline: 1.5rem; box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--accent) 60%, transparent); }
+button.primary:hover, .btn.primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--ink)); color: var(--on-accent); }
+button.grande { min-height: 3.5rem; font-size: 1rem; }
+.toolbar { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 1.5rem; }
+
+/* Captura e foto */
+.envio { display: grid; justify-items: center; text-align: center; gap: .6rem; padding: 2rem 1rem; border: 2px dashed var(--line); border-radius: var(--r); background: var(--paper); transition: border-color .15s, background-color .15s; }
+.envio.arrastando { border-color: var(--accent); background: var(--accent-soft); }
+.preview { margin: 0; display: grid; gap: .4rem; }
+.preview img { width: 100%; max-height: 22rem; object-fit: contain; background: var(--paper); border-radius: var(--r-sm); border: 1px solid var(--line); }
+img.mini { width: 7rem; height: 7rem; object-fit: cover; border-radius: var(--r-sm); border: 1px solid var(--line); flex: none; }
+details.dicas, .faq details { border: 1px solid var(--line); border-radius: var(--r); padding: .8rem 1.1rem; background: var(--surface); margin-bottom: 1rem; }
+details summary { cursor: pointer; font-weight: 700; min-height: 28px; }
+details[open] summary { margin-bottom: .6rem; }
+
+/* Análise */
+.analise { display: grid; justify-items: center; text-align: center; gap: 1rem; padding-block: 3rem; }
+.anel { width: 3rem; height: 3rem; border-radius: 50%; border: 4px solid var(--line); border-top-color: var(--brand-violet); border-right-color: var(--brand-yellow); border-bottom-color: var(--brand-cyan); animation: girar 1s linear infinite; }
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* Painel de resultado (ScorePanel) */
+.painel { display: grid; gap: 1.25rem; padding: 1.5rem 1.25rem 1.25rem; margin-bottom: 1.5rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.painel::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--grad); }
+.painel .notice { margin-bottom: 0; }
+.painel-topo { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
+.confianca { display: grid; gap: .35rem; flex: 1; min-width: 12rem; }
+.confianca .valor { font-family: var(--font-display); font-size: clamp(2.6rem, 9vw, 3.6rem); font-weight: 700; line-height: 1; letter-spacing: -.03em; }
+.escala { height: 10px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.escala span { display: block; height: 100%; background: var(--grad); background-size: 100% 100%; clip-path: inset(0 calc(100% - var(--pct, 0%)) 0 0 round 999px); }
+
+/* Formulários (Field) */
+.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.1rem 1rem; }
+.field { display: grid; gap: .35rem; min-width: 0; align-content: start; }
+.field.full { grid-column: 1 / -1; }
+.field.compacto { max-width: 18rem; }
+.field label { font-weight: 600; font-size: .925rem; }
+.field .hint { font-size: .8rem; color: var(--muted); }
+.field input, .field textarea, .field select { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-sm); padding: .65rem .8rem; width: 100%; min-height: 44px; }
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent); }
+.field textarea { min-height: 6rem; resize: vertical; }
+.field textarea.resumo { font-family: var(--font-data); font-size: .85rem; background: var(--accent-soft); }
+.err { color: var(--danger); font-size: .875rem; font-weight: 600; }
+.field.has-error input, .field.has-error textarea { border-color: var(--danger); border-width: 2px; }
+.check { display: flex; gap: .65rem; align-items: center; min-height: 44px; }
+.check input { width: 1.35rem; height: 1.35rem; accent-color: var(--accent); flex: none; margin: 0; }
+.check label { font-weight: 600; }
+fieldset.opcoes { border: 0; margin: 0; padding: 0; display: grid; gap: .5rem; min-width: 0; }
+fieldset.opcoes legend { font-weight: 700; font-size: 1.02rem; margin-bottom: .5rem; padding: 0; }
+fieldset.opcoes.linha { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
+fieldset.opcoes.linha legend, fieldset.opcoes.linha .err { grid-column: 1 / -1; }
+.opcao { display: flex; align-items: center; gap: .75rem; min-height: 48px; padding: .6rem .9rem; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--surface); cursor: pointer; }
+.opcao input { width: 1.2rem; height: 1.2rem; accent-color: var(--accent); margin: 0; flex: none; }
+.opcao:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); font-weight: 700; }
+.opcao:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+fieldset.has-error .opcao { border-color: var(--danger); }
+.orientacao { display: grid; gap: .6rem; padding-top: .25rem; }
+.fotos { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 18rem)); gap: 1rem; }
+.foto-item { display: grid; gap: .5rem; align-content: start; }
+.foto-item img { width: 100%; aspect-ratio: 4 / 3; max-width: 100%; object-fit: cover; border-radius: var(--r-sm); border: 1px solid var(--line); }
+#resumo-erros, .field, fieldset, .cartao { scroll-margin-top: 1.5rem; }
+
+/* Rodapé */
+.sitefoot { border-top: 1px solid var(--line); }
+.sitefoot-inner { max-width: 48rem; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); padding-block: 1.25rem 2rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; font-size: .8rem; color: var(--muted); }
+.sitefoot strong { font-family: var(--font-display); color: var(--ink); letter-spacing: .04em; }
+.sitefoot a { font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .anel { border-top-color: var(--brand-violet); }
+}
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="brandbar">
+  <div class="brandbar-inner">
+    <div class="logos">
+      <span class="ufc-plate"><img class="logo-ufc" src="data:image/png;base64,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" width="96" height="69" alt="Universidade Federal do Ceará — Campus Quixadá"></span>
+      <span class="logo-sep" aria-hidden="true"></span>
+      <img class="logo-lumia" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAADVCAMAAAC8CX7BAAABIFBMVEWfcOHx8fPm5ujY2Nv49/mjo6Yfw9tsa272x0x0Z5b6xjwnvdSZdMqmoqZRmKOLbaWObrcwMDSomGFLtMW2tsdzdHlIusvqyGmpp6CWdcUlbnTRsWkfHm+olsRXrbiRc185lKDLrmihhMvhum1lJm4AAP9Ht8iRcrs5usnjxW/NoY9Os8XQrGZuZiM0dZN1kXT//wBVq7aolJAA//9xuLe4yMjLuMtGxNR6bZP/AAA6wc+oiMn/AP88rblIwtBwcXZzdHqScziXdMXb1ak9tsTGnojBvcJ5e4G2sXy2sHa9wcQdbx05sbx4eYBFwdHOqaTEnoT59X5sMSRiI5x/f/8A/wBj19mu1q7/f38Af/8xt7ycwJ/3vzYAAAD9/fz+/v58MSh1AAAAYHRSTlP6oWAkzhb8CvYX/vWiXRsgXQcXYhr24Z/hbAVkBFRjERkp0ewGAZWOqWXmKpEGDBABiYYB5hgWm1QBqKkBWW1ZnA8oEW+HUptvimEEl8vMC28JCQYCAREGAgLT6P8A/AFyWhLKAAArGUlEQVR42u2dC3/bNpLARYIwwsh6UFbqsy2/WttxzrWTNhfnnW6b7vZut9ve7nZ370Xx+3+Lw+BFEATfkF8ifm1sSyQIkX/NDAYzg0HcvpFwEobhZCrbhLYwJHHf+hYPWp21WIQUoul0Z5O2gWjw++bOzg4D7OSkv7c9WI0F1YQhNShoABjQFUb9/e3BqtlOqO7bKWYqg9cOZasXXD1YNTTgSTid1qJKsjUNw/4e92BVqsBpfahEezoli/4u92AVt7+F1K4aNG9Pp73M6sEqllaTJiow23qyerAKLfZpW6rA0pr0t7kHy2pbdcGqB6sHq0BcTbpxNfhy2vscerDcakFhZPVg9WDlxVVXrKgq7B0OPVjOxdVg8L63sXqwDHFV7bmCdcGnTyG2YSezIq1rwh6sHqysvNqsYgpCZUJoJychb2/emA6vafihv809WKp9KFeDmzvTKQPKOG0BhE3TZerNaR/j0IOltzInwyaDSpjkp9DETwEXi/5j4VlPp6HNciez2WV/79cRrEW4U0gVhUWEiZ5az2WvEqYWQ1tww+Fstvfs2d5s1searh9Yk81CYfWmdvBxZFWCh3vPth89erS9/ez4sL//6wXWooirzemkY0z729keYMXa9nGvD9cKrJMCrqgO7BpcpXMFZDmUWQlr/RNdSfuQuADLzhVIq84u9EvG1ePHj+n/QNYsfuGIqvRXl70lnTuw91D1fsPL1b1au8u1GmwerA+TnSJx1f0WzARXrNFf95wpQ4J5c+PcINAwbv9Fiuj5M1J8xyJMMCGupi9RSLsLi7uLMDVh4IJt7wbc2WZ+o4HFz2AVVyF56eB5KYEl/qUi660LDpCvGvpn196w3lvH4SBrB0g7AHf+9PpwSdXnac4Wqvo09cCy+kWpuHISoXD4LDWwGFnbn13oQoK8YCla4KGOcgD7Wm9+0lwdyuEEAf2PopnrIOIHBNC8zmQhXw6XXg1bFJl+d2zDKWuntHt1euD5uC1YVsP9qav05gxYj0BiHbsAC6tbC83vONi5p3XmoeZgYb+0gyQ7Xi/pZhaiTGeWJ58ZTuA3BitzO2qTZYBFbFxNJ65sAQYWs9wfs5+uwNI/+9LrONoMpUEbsDLD8fNgoewBpANYRmdBTnfnr9awex1LenNbgmUxsFzmBs6epaY7t7GcqMJXWbDmDsXfcvVgtRGKusBaGp25BCs2zq4v8QaGgWXjyp07BLwNGlauwMJe6b3toFosXDR9FpVgLX3UBSyvXKLkwJp1EVj1RVYGrCivCDfdJm8xd8MjxdWjZzMXva4WrHjVYAUdRJb54KslVtiFW7Cy6g02A1a4aq7iQ93xzkyst3cNrPmNg0VHnDgSWHk7oJsqNL5lrAPcWGKdTPNc/c0pV/GL2d4j90s6Blj4voEV+G1FVl6guAQrP9L6ImtQNiPcXEF+jUbW9t4sXgVY3SQW7gpW0his1vY7zgmUarDCTv1zkZU0Ait8mvMzrCJiarb39bbAytUS9L0Hq639nu/IrSq0CKy634JByYxwZzVZEIez4z3aZrMXcQ9WJ5FlU1Ro5WAFtboYFFvuK0yNJ7NDl8IQm36sLq5sdBtgLf1WHv68oqp2N5BuF6j7LRgUCqzN+5PAnDPe7x9Yze13azduwbIKLBhrVF9ivc0JrJ37U33obvmxWoHVYtRFBpAzsAoEVj2RNSgUWPcozfQhgBX4zbwkya71sTsFyy6w6llZgwILa3NC1hSszsY7aQVWQ/u9oBOXYBUKrFpjFWCRaRdFSG65qvvdklgtwWoossYFhrU7G6tQYNWysgZ2H1YjRUjC6STsweoIVqNxF/XhUGJF2fvgBc0msRwsczGn0RLhYrL5/v3k5O6Ahe8nWMsmcdBFesqdgzQTH0iBNb68pJbEMk33ZopwetsVbJ0G+t0eWE2Cqgu6cAZWLoCQ+M1EFgPLrCvTzHJnJ9/qJPKBSKwGyrDYE+BKYmWvQEeGmtkbA5vp3khgLXqwXIFV234vnrA5Ait3FjIivyqHysAyKoA0q+3I7bPN6eLOgBXeV7BqiqySDpxJLGIKrFxA9bwarNCIl2nmcxfirouRFV1dXFwteolVV2SVeZicuBssAisxrPkqJ+nAogmbCR/hqWi/AnQ0PjrY2toaj3fXHqx6YyfF57vyY2UFVuDzFYWgwVAH+TnhZjNEhOG/2Raso4Ozs+Hwiy/OtlqT9XDAqiWySgSWG7DMHArhaM92VCGyBvkc1WayJ+oI1tXW2XBjY0jbL63JejA2Vi2XAy45vQZYtaIrDV8Dtoixii/wIOcd3Wzm61R6tF246cmYiqsN3n7ZOlprPxZ/iPNqgbUsAcuJ5z1nutucZ+Uia9BZE+50CrMZb0msaDtrKbKcqsIbjyD1mmiYOF742eOzay1uwMKedUXAQLpUbQ/iU8M7utMsMUed3U4XXpxrYA23xm5UYXKvwGqiYfIZqr57sEKjygCxX7tUbQ/MupAN42VOVHGadjubjM83dLCuHgBYf2kIlm9qGNxgeIGPKsEKmoJVuKjfQGQNciZWM8GjuSra6MLdLFjn7STW3KXxfvNgkSa1HHLp+e7Bmhm+BlJkPpb5cwemF2vaytnQNubUBGtrdw0lFjFXS0rIwqbmi9yDhYpN1vpO0oEZOzptqAk7RsmPz4dDzcraIk7AulfGu58XBIV34SSvNiuESHOwcKHAyossXALWpAtYmVXGNmAd0VlhStbwx6N1BCsxY1IKXQ7EVIRkFWCVUF7b4zD4W7jZPoci66nYbEHW1ZYusIbnbsC6V+lfvmWeWPC8xjlFmLgHyxhdVihFFZPQFKyTNx1sd0PavW+egREaYLXyZN0tzzv2G4Nliqyi8jOmvIhi92CVCizzXheLrIHhHm0kdHKFu/cbk0UudLA2zg9uHaz5bYAVkzrRTubSMIIzm4JVoZJOSwVWfZE1MNIoaoN1Gp/+kC8Ivz9ZFGzdVGK9a2BttPJk3a1F6BZgWXyPh5VrReyZNgfrsMlqjoVwU2rWBGu6WxOrOPzBtoHF5g+TuBFaRz9nwdq9bbBuw3iv80DjXAxn1Aos0sjXgCq/eKQIrKzt/qYOVR/i+IcfCrb13dwBtOqzdfWjc7DC+whW7oniSheWdX1o3g2sbNCV1YSq5yQ1wQqrRVUc74Y/lOwW/X5n/gN0ozbGLAfrY8bIcqEK75vnnR9QGZTyyrPkjLqWWIbpbtuPoN66zqCpt4GE8x92KjYh33y/vz+Z/Fc96/1jVmKN77/EamVjxVXZCsRqNTsGi1SY7vVFVgOJdTKhDaCq3Nqeyy2qEyfVGdJhFqyzWwcL3ZIqrHpg9ncdq8LQr+FPw3UWzQ3jvRgsMpkAU7Wg0va535lMyiPXdj/qazrD84v1BcuUlbhEYPkrAetlvRWbOh4Hw49VuAQdTZoxpcG1P6lQhcOu8Q0PBKzTsiXDAnHmFixzavrK+vlqOUkHmYj34uzAyc6gbXuPy+aIJOPIciSxnC7pJDcFVpnIwgUGmFuwakbFmOaejb9BZh25OGYmnLYG6+mkDKwPWQ/p+cWfWjjLVyqxbg6sU+QVFAvCRalXTsEyBVZUD0Crk5SCFao5Xsn2ceFkp6UqrChx9PboXNeF78and00V3hxYufUSXCBKUjqcglU7JqbUGpRgQXmrp5vQpmV7PpNwMt1pamdtAlblST8AVsbG6g6W0yWd5tWMwwqwireuSOICkTUufJArBKsBgsgKFtT1CN+8CSt3j6NHNICLQjWt7jP+cLECG8uhH6s5WL+1Biu3zii/I8VeeZdghX7tqn1GtT+LyBo0vGsE4Kpma3MHoKqToJhoYA03hu/umrsB3aQqzIdv4grXqTuwGm2jSCo9DoMWt57JrSq7qm7AIMlILGpj3TZY81sFyxKimXvi1/EqwKqzDF40TMsOPYNWN/8ExFahCtxpUpF0nIn02/jx7vmxmoKFO4FlWWouSw9zCFajfV8rRdag7f0PCzxbFKtG+YVHW3dsrbB7ir3fAay8/Y6flz1Dd2uFoSmwEtpewjsvkrTF9DX4UbmuM2j/BEKL0KJYNYwh3d26Y2EzNeONyqz/LhIrZ7+j0nxWV2AlTUtB5iVr4gosm9N0p3H1ZDMeq03YzEoTVrvundQULDMsxfPKqn6sDCwfQcMhIRhZm5GRjdxJrFyJyTZcxUc/btwtiUVyYCU3C1ZkVP0IynSOM1Vo4Bx4la28zE03sDpVWxbGu54KvXF++2DFFTK+BljLTmCV1ikys6QdgVVaWqlWC1yCFXdJ8bGBNXx9QW4dLOy5BCu/RX0lWCWlID1EkhVIrKS86FatZmx/0A2sbGJhG4G1e9E9zs8xWKgrWF5HsIprQeYnX67A6iqwcjeqI1idU+x3tzY62+5OK/rl5vsdwbKB2XDNp6wzR2B1F1jmuk5HsBZ6tZmdFvvpmLb7rUssC1jxjYNVILIsIXVOwHIhsMxP2hEsXWS12pzCMLEclTHqBpZhfDf1N1Qb/5VgFe8PlqxGFZbUYa5vvvuFYL140Xhj+bBj4bWLDT224axdddu5y+K2poe0qZFFciEuLcAyvPfFIzG5aQOWG4FlXLurxCLKfN9sszfF2IWJ5dZBalkGS9qLzxryyLoaaTF6rMvCjsAKXICVEVkaWJdkNpuRppHB3Yrbjl/rmnC41Y4Jt7PCuFFN0Kqzq7WXFSyLy8G6yuIArJzyd2JlKbAOj/f2vt7+eu941vD7vdOuxiTn6iIjsM4Prm4frJxiaCaycKW8qwVW3n63A+4GLM8NWLrIkmBdzrYfsba914ysSOrCaat6fhmwzu7CBgK5iKygwTp07iH5uPKYgsAc5NUQWE5UoSuBlfm0A4Mr2p7N2ujCVtveXxg1jO4GWBaR1VZgBb7V3q4DVq6neS2wXjUFK+df8Rq1IvnMwSKzrx+lbe+wEVg7IsOnjek+zNRMPrgLe+nkpU4TkVVDjdYEq14cS3ewTAHtIRnOMEc1miGg5/LDcLAO9wRTj5k2PG7hcGgDFggsFT86bK0JXRvvOfumvpVl0V+twcpEORQVOOsMVj6ysJFY+WuRScnBmj0TXD3myrBJ33/jRlYLE0tUTBZo0TnhHQErb816OP5Q5zyTyKCOn7sw+Pmz1lvxDvcGWI1Dky3eFRUuavSUGK3MphRgbadc0X8aiqzNlpt/XbzjYHUqbGsFK+kI1tw3pzvzOn0iv4bAqg8WPS5Q5UY/rAqsz52cKwnx7Z84C5ak69n3TcB62k4Tjj8N2U6FGwKtljs0uQfLIrJq7PaWmEHFxU+pLli7lFTW/JLtkLrOCrsFcyRFXj9NFX4lJFZTK4vtmdJCE168YxtgdiuYbAOrWya03fENJYrLbnlikVeFW0zUBQv8pKyVre53lFjYX3YBK7fSIDvQbSxuYT1u7HIIp09Ls/OLBBbbV1UaWBufxrEjsDq7G6w+Q5Z/XHDTqbkRotxCbqGYqw9WnflCeYXJKrCQ13YCLPs33SKJDtbxNgPrMfsfRNZfGixHL8IwbPwwd/mUUIHVQWDlJVbezixucWyzVUl+vZ8qJMwYylH11iauSvxfDcCyWdEuwSJdA7GLPCzCQapE1mM5MTyOV9suzoWkEr6G1+PYFViI1Md8sYhI3QilgKMVm2BSheV7QX2u7pLE6iqwoOV8wprn/XBvm5PFpFYL/3tz3+hGZvl5uOUMLPr8WzVUvYAWsKwo4+LIilXZ/OrugOVAYOVFFgsUkmuFwpPFZRa338kKufrHJ4Orsw5cmfZj2xVUFFcoQ4Wtll3n+55Xp7ubAquJ8Z73QrUCy1qAXoF1rBYLFVnJyri6unidAWvjXWvnqDOwcl/XwpQGfTktqInp3QTLicCKLU7SJA2bme3JKeFjQdbqlOF4fLaRBetTF64cgZVbMEYdAna9eXznwUpyQYltwfLzxqUCi4CTVNhYQmStiqx/jM++yIC18e5i9w6C1YGs8oCIOwNWdShGO5EV6hGkl9R+Z0Q9ljPDFZH10qhc1CFeZsVgtSarZPPdu6QKOztH1SXyIksLTZYr0crlQM2sw1Uowq2hAVYny32VYLUjK7DssHQHwcqb7lHbgRCUKzChx7wr+12CRclyLrP+frSVKZMMLqwtclfByq//1RBXPmqkOW7N3eDIdLdFc2fASkWWWNdZhcz67/FBlitIJuwosFYJVoxRM7QCrzo+wCFYuXis64qHrsCqE0Xd1uMQ+LNM+tdsL+txcC+zdhlXWUX4qStXKwWLrdYEDbBCqOH3uytYlQmrRWC5Mt2tIisDVnS8rbhSFvze9w65OjpIF56lgXXROZQYO8kGCEYFd3ZeFy255nOLYFVWDfG1uxbUn8g2dZL62YTVS7kY/ViTWXuzPzni6uroo8EVuEavOvdLXGSIF9oYUHBz7nuVbDGsSGMWApdg2daRsPVq+a2WXPIdGGBRM2tbresoO+uZG0Nr9+jj+VAHC35719HToCZvXdEKym1ugv1StmClpxZWYkYgewoCr+MCB4Y400A0y2egKk+/WvrtIfT1tPmoo97QpDpcxgDr72DAS2fWY+l52D7+3gVXW++0eAYejOWGKwiG6t4qy7lSOx7gMhimf3uMqrAJDNplu8YloqrOiH7AQudba52jI/Vh+Gicq92ge7NSJ/ze8WW3yy7G4x/fGQvPww75E3mJMsFaC3G2weaw9IAxOXz+/Hk4nj0fY0y0Ro+vI23oceL2iaVC+TibxqNdwhhDNgYHnz0kvLcQF30lxM0xhkngPtHPRJwMIwzVvafd5cC6PNb9pFIjUnX4fRdL62i8lV0e5GR1djTcRiMLBiJvMzcP5eG1fLUZ5SfVwWJCq/UNXBxlU1MlWJ8uFvfuhlXEc/atEKz48Fgz4B+nCdJ0etgOrSNwXm3kwXp9Me4fwBqBFf81dWc90vHafrY3azw/3D3ik8EcWBuvL676+79WYMURs+Afp77SVGjtzRpNEK+Ojg6Ej8FE6/U/dvvbv2ZgaRZ8GuogrPiv92azmqs8hAqrHyVWJlefLo76u792YFFt+CwPlkizAI04q0zioSqQzgSzWKV8veu5Wk+w4rfHz7YfZRqfJHKNSNk6Pv61dBpIqTpL7fTUc8Uy6l9/Ourt9vUEC7ThdoYqzRMv4DqevbULK0rV63cW98JQFGt4t9WLq7UFK36hO7RUwmHG//DM6o+3OEM1sMB9Ne6ng2sMViq0HufllbS2ZjZ5dWb1Lki0zrd6rtYcLErW3nYqsNKWyixL3MPRzwVcyczUq97NsO5gSaFFWfo/O1r5EsuLg2EJWOdbR/3KWg9WDOmGWlTpoxxZ2zmwdj8OC8kanh30WrAHK6MPH32lm/GKrTxYRz+n5dRUsT4RhHzQW1c9WFqbcbQeaUvTwpi3gXWugaWHi1Kjvfdd9WCZaGlOrQqJtaUFHssf1GbfOup9Vz1Y+fa9hpYGVt54l1umDoeav/38x3GPVQ9WgRlP0dKyw4S7wZzjncaykoxcJfyfnw8OxvSwl/3N7sGytLdshri3nVlBtG3otCtqX3Gsfv74kZlWPVY9WEXtBdOIGlsFG4WNL16LsmpnP388Yn6rHqserFK0XjD3w/EehWt7e69oEXp8cfHp9etPPx6Nx5AS9bLHqgerltiKL2fHtJWE++1eXIx5wNWDher0wwe9djL88fK056k1WJKtWu2mqPoQNm8T+e9ENpz+egj/HcJ/+TaraOKQ58+fs3+0Nq7ZQvMFKvqv6P+7DxwsYcqX8/XyJhVgOB+Nnm5ubj4tbDt6m8o2Km7f6u33sn39+68r2n+IBqdZuj34hrUDrW2pdkYb//nNGfv/m0w7uFcO5sFDELt4/8svvxxUti+/1A/7kv/N2r9Y27/a2leFjU1o6A/6q9HR/6rf/k1rXzRtBz1YNw7We8bMlzaSKtt71jqCxRdTGVVfffWv/1LY2mP1yxdbPVg33EK8PxpNdSUHbb9ZG5W3/2Rtr6r9O2+jf7f3cpBtW7omtDft2Hu11PogwIrjBQlDAntFySIfhGh/hMRsJ7TBj8VCvXmyOMkddqj9q716SIQh/z1t9N/Dw0t2zCVp1mDAu7uE/q/a1e5isaA/ya48CF4N2ZFxD1bfendDfwv61oPVtx6svvVg9a1vdxKs3fH4CFofedw3h2CdhuODM7YacTDuMwb75gysowOZUH+2ddST1TdHYF0dnOnbw/Vk9c0JWAuo1KDA+mWrt7P65gSsq2w55LPxor+nfXMAFhVYsrIa5A9+cdDrwr45AIscDPWiaht3MGbIQVn2XGn3OrXekxUMnl83eWkbQ+mYbr44vWOwht/cDlh9vsYDk1i7B8NM0drbAquw/YqucVdBgdE828ccVe+shNA86jr4GUaZDVPxPh5D9Bns+4NH2THMzUFmTnw1x/cNrC+GaREQ+svt2Fi4YO8t2F+9/VbHogvsG7vxRr5XvWsk8nxSNNi5HCzGJYTyK+uv0Oti2H+QDic3BuSVfNDSN+8kWIvxN8NsAaxbAeuPBRsxw/6MLXZ4JAilUGDf3JWe1AGLnmUHK9r3/FCMbl7WEbydHTztkw5kBHgtsmNgHxTFpKAjBLsi3iuwhMiSXP1ydjuakN9xw8RNMmCl5it7I1G/i1+T9CDY34/Il3V5JY/Gc4xzXWWunhA6pIVSq/ox5I+BF+o0JJmL64N/ZQyeqkIAi31YPJ9j/XoSrCRzPf4X3J9EdXQzhnxXsCLdQTo827q6A2DBDVzoEstqPiVlakxKG9i2F1eaJ2ZXhO0m7EXWqwBYxAArfz5XhXzwJNvPKPstiqESi9B2JLEPzOc7qyb3SGJBkeQv1PY4t8SVARZmm32C+uJgEfhbbS6P+F9EHEnfBFMcz9mrcNA18tlm9OyEV6wrJPtFCbyOhfEe8q6wYbXDGQKshA9G39me+DmwxIDROB38KwVWdgAzoQrVGPhurQgLM8oYEh8+FmDFxBzMHQYLyPplKLi6rSmhDhZGfK9j2OOZg8X+pn9yluS7c/auRw8IfDhHHkQwbG4Mv8fJLmw2Da+zc+nR9GT6OoKzta7QCw0r8RoDi00e2N6+KNTBeq6DJfuhJ+Hs4LEcPB3AZz4hSFWhsMfFBXxmc6Wfg92ORL0JYBFxIc9D5D6ARck62Do7e322dXvbxKVgwVQK7p3HeIFnEYhddsEEZ89KvcseLNvRGe44owYeALv9Htt7HHlLdvSSPguwVAI4DIEtTN+cswvBHtvplCvyxfUC+mokLu8zHEmRxBIH0XP8f2YHj/nwPH4JOSsUYHEhBJ+AneuJofPL8d3s5/LNYMkBVoPB9wEsFuk35pVl7oLEAkVEDq/pI5JooAmBvd7pMXBvfYIJSCL6vYV3/VcEXkewES+96X4EhrBHBReGtymNGAxjeLAj+nxp35g/VAoIfXwhvCvJYtzCGWxneY/wGSW9HGYDTKw2Fol9en4IB6Ek8n3YwXruC6m0ZOdjMYAcWPJ68HlgELSPV5jA5cA4Y28SNkAAi/DBhDCY+f0A69Zb1sZaCAt86cecDQ4cQAPaLJJOBEZOZvN6eu/9SBrvCbd55blz+iyDEXt9BK+DksXi6tIEj9QZcF2SGuc4dRzYwPJNM58eP2Jgic/1KzPjTbC4LlfXS90N8DnizJsBSucx9Psz6sFqNSsEMxugIRwvcBOwm83VEL39/0XVGbvXS+UoQnASdxIAWLD3M30Xs3Nj9iUfcbHDwcLKVRATdiVYVSIwVaBnkDhkVxK2TQy/SV242LdILF+bAVxfX4OlNkpxTJj3IrGA5QPcCf8SSD8WNd0RfEEwuyZ/E8BS0MfMg3Lag9UQLAKGLDNMfI6OcNzQBxJK+0aYN8rLxaxebszQ9xEcBYcslSSCRzqSk3YGFn2SUrsBgOwNopwbRIAFljM0T40wMsB6ISw5qsFnYIuLgUiwSCJdnEg6SE2wmH+K+7EmiF8NpDNIOf5hE0YdpSs3mB6s+mARZT8v/WtdJtEHQvJgMXSwsvF1sOYKrDgPFkrBioTcsIMlmz+2g8WnjnS0MBWM5BkpWHEZWFIdi67EJISD9So9W4GlBtOD1XxWCDcbX2PsSYnFH3+qChP1pBRYYOaCLuTgcbASLFShvEBWYqHUspJPkKtCOTcVqhAxYx6ly8n7AOkL4Z6HPhLwL1G4qEEFg0f4V4wzqpA78nEOLPFKqgrZ6ej5BLRglPgaWBxLmBnQwcwR6qAISYjJOkos+nX9q1RQJG+8B9x4J8J4V2D58tUTBZZ6bEJ0ZMCaIIVT6j+PfGmGceN9riRYFMU6+XDiW2mcR3y2QVEZSa+6abzzAZpgsXmDOACmluDcYm5hIsASZ/ObgLOLEISctARrNMJrAxZ9AKI4C5hDE64RxawwYO9h5W5AcBg9yicZsMDGhifJwArgFD7xI0R4C7JgvWDuBihVw6eHiVpBgv7Z9J9OE8AuJ6yH9JmGTHQQ4RUg4MYEFwEBYCgZI4og2ZdgpQNANrAYeoQs6AFLIbH454DvD/Ow0LOvhS+Cnj6in4pa9XMCxlw7dRiRb7/5jqwHWCQ1H3zMCOIebAEWs1npq38gL5jSE9YtTkMCMFcTvjDexUHoOfLkuWBEZ8CKuSeWvztPnWiyf2GteeIYPYhmrk5UPlxuUvOVID4QAGvO/J5iABMDLE86SMX1mCpMT6dgEe1NMWCYIvjMxNoPhOxufLPfPHnyuzUBK+ILL2JZBAnEmBeH3ka5KuKnSzrcfE3SOCXsK7OWHhVxXziOZ2KBhh+N+UJLIh+qPMnX3I2YecG5AU3Ekg47Rl9G0dZwtFUfjzvb5eCZxOKGuFyjEe4GTwOLiOksHHcNokqeDtTArWAd8xXqhfqUCEejIPDbrOwsyE9PnjypFlkPQxViXzXE9A4stc7B9wlrtWyZVj1Z/hcWLh8BBcFz9irmDqVf2drtc9WzXGaUi8HC7SQ6zgZrzflrr+RJlmPEiz4PfEnEXwgvWOgfewMzyhCsLusDGIUQPAO9qRhBvgiNCNrHYpWZnYQjbYU6QZkBo5hD20oRAldUZJG1ACutkcfr3tGf8CJ/i3GjP9gJDpWLOi1WTxhrWLhLyVgdQuQkKMEity0hsrtFaLnD/IQ/iRlZHD+3HBNhrL/Kw43lBUP2iWLxb6gGzzvmb8UzdQI/l4T6QeoTio4XaeczNqzQa+PLIuTNn59wsnbXAaxsS7R/83+b71pfTeLSo8veNXuyHiNePM1cLakefOUYkvLhy7+ZXm+uCS/BwHrypI7MeqBljHLcnBb/1bSv6lan+9P6g0iaHZDUGgzyG4dlUT0g5BUj6ztyuX5g9a2q/YYvG9qxGL/56YnWfnpDSNSD1beuE6TRt39+kml//nZUrA97sPrWFqwn347Cyx4s2f5+e5aebmGtyr6zXiUpzsypfQVM3vyUJet3b0oM+F5i9a2+r+G73z3RjXeytsY71txDsCrP/Efh6istEZ4Fj4vCAIrfyR3XIeB7IjLXQhbTQMSozIGGlsEvCtH6SeNqDdwNWQeo+hP7HvotfUqw7Br6XrslsrgmC/JSRCRMJ9a360VEYb8iNb4UUAjdB1/VLuJrSpB3beZYzi23A5csT0eSrCquHs6Sjn4v2Mo9j4nSnDUjWPKF9eV2a6+QHm0xUf5peQiELephf2lP7xdLdlWg8oSjsgIBDF1iwY2dsmDBE4lIVPJ5xj4xwFKB+9p9KvPJE8K14XfrsaTjsyxA9Tz4Yn5Cv41oIWzXJOFgkZE/itRrmnFr2rfmKxB3EMYyUT2RmfDIR0mary9+42FZBEmxJLvnbzM5BIvjItE+MS/G/jrlMsfoIYsFpN+o7B8eHJ9AUKCPE3Iq8pUgLtnzrxHG7G/jw4VwrPFxR2lGkaXtfrdOi9C+foMJj4WKT/EIZeQE+3Jyp17VXCjJzZkWvvV+8wwbU2Hw6OPQnpxPMATKaQZPseNcGElJkZxeBizHLXsqURKHG0vpEEXop94dNzgzFygHKybf1VmDfiBg7S+XUsoz0b/0+ARZajEWHyxy9WRQAMQ9hOpZJ8gwVzDK5s4LsMB8IyxkIuYxEUvvs3j87GWSSix4IVF9oTBGiegRjkTCaw1XgQO1i+FERiMgWQoAI2Sm8vMo1VSVwcV4LAeLzcYQQYhwQj/3kkUka5Z6hF+JoRJ6Yf6KGnwVWBH+9um6BPrFf4SQJRH8DZqGgSUsrQWPWPIRe9qXPqjCEO/zuCX2sJ7LmCZkmkHaKwIWsOZ8EVEY4xHLgWAWNpEvU6sm4qHzwvLDagA8novIzuHNic/eUGOBd0VHkfgIKoXIqLrAElDTylcQDsM7k8FdcH02RBaClVqi6sNhsNJQrI2IVIMFocnrFPOuRaBDdFssq40RxG904LEAcp6SikX4HbU+TtkRIj7O4CqQMccpWEgm7EOSDAs55WARXybyUyDYsacikY8eBEGsMAgWgUpGckAsfBSCXyHobykmGmCwB6x/jEUP8hNkUuN5GDTGKmGR3QMNLEgV8UL2NeNDlOW2RBo/q0jB4+Cx+kxYglWylXyE1yqZgk3EEp6qsB+IugkiCZ0X21gKsLyIF+kjZO7JWHDMIv2wqGXKI3xZHn6m5ALmeQmQjg+BxPiEBcnjMMQ8V1om8kd/CLyxSFdNxBkQBc+z4PmA2IwPA1hLgQMzE3m8M8geeJdlSLBiJCxNf6mLEiKoE4VkYo/1g/EYhjIOJxCyD3NTwhICZjwG2mdX8GCo4PL4zFKa2AUQYZ+JmGWSrDPDeI3AQtw2DwEwLL/oPAEBRfA1g+cyl2DNKVaJljMFwXvpWj1zABH6ip9WwuM2VrwvJCORmpFnl3E4E8jZ8EYR0cBi5SFY2CFPacA8pSERCRIAFn3MJMI8nWif5W8sYPaKEM9gpoYQqMXkMk3ll8k+kayhlTCwfBLLwGnxMXAsM/hlrbBIxt8TmNDys6klR5K3Ises3N1Quz2c9C9eloEneaVgMVXBZ/meKOUB0uylJIjedGz6cojyGiZpYTRx17lg5M+VVZyBRGv5lxwK/DNJwQJ9yo6RSVj8G3/Nq18t+SUgbt8XzxauuIiivxD5phxt6tVKBMoJL/GR8EwlOTKe/I24EBfsC7CITLyPo4gYKWGIpYX0YGXBYl5JkS6YgpU+DORrYMko+WDJbjVLZhEBSonIZhHJ6P4HSRvL8fuDBCsUpa14aQhMqVDp6zxleSHACmSOP68YAnj56uJU51HaeP1JcIbCcMOMP4Gl4ojE+dRdygbJkZCFSlU6tkpz5WDFvkzZZSQTzUuqjsUoHXsPlgEW+G98xKdDNrASDSyMZJkskFhp1TV1t7VkdGKCRdLHRzUvf2qIT72ETRxTVRgqsKTQ+RNTZSNW1S1g5nzAwRIVkCRYaZVKoQoRt+dhopD64YEngTKvoiTKOGhlV02wkAQrzoCFEySzd5Y9WCZYPuYTM7BQ7BIL62CxhDuW1g7vRiASvECmxxMhsSDvXc3wibSxBFhsTpb8VUgspCQWJMWAgzQ8TVUhYaowEsnKSmLxdJql91k9Y2bZT1Llx8C6BvevlJ8yMJ5lqIrGebOCRaxgZbOyMZukIFZrJ+jByoMF2onbGRpYc/rWhC2bYDUFjECiiEx2VTIEpcXRpLqMTa8RgcLfYmEHntKYWjpCFWZsFTDeQ1lSVsvxl2Bps6prLgilaRTJaqExSwRiq42qSsBndRFRAjMVWTiWhZKyYCEdLJzaWCRJUlWoKn3x6U4PlgFWgrkiyYC1kAvRszTPPAWLG+8IpYU/lJUr8g5R1vMOYGEFFknklIvN/Xk9JITZkg5+IcBi1+VFP8SsEOp+gHPdR7+xmgtpeQZWTYKtK4MNKGaFEixRp0/HXNncSANLQS4KCGQlVjorhAsosAg3AhlYQQ9WFiy2pBpnwTqVJZDFc+VgsRILKGGuAO7FgT+Ux5mZ8xwG04/lm2Dx3lliP52+g7UyF84H6d70uRMVdJao/7iUKfXMj+UlSp4QlbfP8ONgJeCRgK6ZzpMCi05cE9FoH/7nFCzi8Ro3drD41ISPVICFfflplwqstz1YqSoECUPv4G86WEksCh8zv7T0vMvEd098YcURqrSxyHoPgjQcSkisVxIsMJ4/iOKyMGF45UmDnDtIJVgyhT7weL0zViIN7Hfg/IRJrFRRYZV+D+9iabx7S2lPCUQipKkrVTzL5+VjIl6yd99uvHPPO+8MC+mGVFUurwcru86vZ18mIj4k8X1ZsJotcYw8buHLqgZ8+Q6xybxZXkGu76WhKhEPYVGRX9jnKpYdiHB6GcydGSGrni08lbyyvNS1SDsUIu3k5IIfrZYWY9GDLAABQk5wDs5NooEFb/gq9gyLuh8IRgHsi7NeiSvw67N5ifgU4pJ0CPPyQL91A0vZQiqagBmv8uYnVPKz6mb8PX4K6JBYmFdsY4BsjO4cIZQJoptDUf+0br88NU7jDuC3uRwAYV0ws0s6LJiPKhEDStLTxSCTRBaPQzLYgV8t4eMDsyxR7GBtmZjtapC+Gf8ddjpg0Q0ke4V07KIQ3KkYccK6iFmAw1jrad3BKm1J5oflrXzwVelJ5ZfJnQLSigWdg20TlR0pH3/uXcdblei7B7X9tOsClhlceZq5cyI6MoORDOrU/zBuf2ItymDWd0gyEaSJ/uwSUdtPq4aVv57tF6Mf+ZI2oNM8Kklu7GbdiFPbFfQz9H2ierDuuprmfv3gRvaDuDutB+sm0GLtmqzTh/5/7nAUQPc3dBkAAAAASUVORK5CYII=" width="130" height="46" alt="LUMIA — Laboratório de Usabilidade, Mídias e Inteligência Artificial">
+    </div>
+    <span class="tag">APOENA</span>
+  </div>
+  <div class="brandline" aria-hidden="true"></div>
+</header>
+
+<nav class="nav" aria-label="Principal">
+  <ul>
+    <li><a href="#inicio">Início</a></li>
+    <li><a href="#identificar">Identificar objeto</a></li>
+    <li><a href="#educacao">Educação patrimonial</a></li>
+    <li><a href="#sobre">Sobre o APOENA</a></li>
+  </ul>
+</nav>
+
+<main id="conteudo" class="wrap" tabindex="-1">
+  <noscript><p>O APOENA precisa de JavaScript ativado no navegador.</p></noscript>
+</main>
+
+<footer class="sitefoot">
+  <div class="sitefoot-inner">
+    <span><strong>LUMIA</strong> · Laboratório de Usabilidade, Mídias e Inteligência Artificial · UFC</span>
+    <a href="#ajuda">Ajuda: como usar o APOENA</a>
+  </div>
+</footer>
+<div id="anuncio" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Ordem: configuração → conteúdo → serviço de identificação (integração) → interface -->
+<script>
+/* js/config.js */
+/*
+ * APOENA — Configuração do frontend
+ * ------------------------------------------------------------------
+ * Este é o ÚNICO arquivo que precisa ser alterado para ligar o frontend
+ * ao modelo de visão computacional (ver também js/servico-identificacao.js).
+ */
+window.APOENA = window.APOENA || {};
+
+window.APOENA.config = {
+  /* ================================================================
+   * >>> INTEGRAÇÃO DO MODELO DE VISÃO COMPUTACIONAL — PASSO 1 <<<
+   * ----------------------------------------------------------------
+   * Enquanto o modelo não existir, MODO = "simulado": o frontend usa
+   * respostas de exemplo (js/servico-identificacao.js → simularResposta).
+   *
+   * Quando a API do modelo estiver no ar:
+   *   1. troque MODO para "api";
+   *   2. preencha API_URL com o endereço do serviço (sem barra no fim);
+   *   3. ajuste API_ROTA_IDENTIFICAR, se a rota for outra;
+   *   4. confira o formato da resposta no contrato descrito em
+   *      js/servico-identificacao.js e no README.md.
+   * Nenhuma tela precisa ser alterada.
+   * ================================================================ */
+  MODO: "simulado", // "simulado" | "api"
+  API_URL: "",      // ex.: "https://apoena-api.exemplo.ufc.br"
+  API_ROTA_IDENTIFICAR: "/v1/identificar",
+  API_TOKEN: "",    // se a API exigir chave, NÃO versionar o valor real
+
+  // Tempo máximo de espera pela resposta do modelo (ms). RNF02.
+  TEMPO_LIMITE_MS: 30000,
+
+  // Abaixo deste grau de confiança (0 a 1), o resultado é tratado como
+  // "não identificado". Valor provisório: definir com a equipe e o arqueólogo.
+  LIMIAR_CONFIANCA: 0.6,
+
+  // Imagens aceitas no envio.
+  TIPOS_IMAGEM: ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"],
+  TAMANHO_MAX_MB: 10,
+
+  // Simulação: resultado padrão quando MODO = "simulado".
+  // "identificado" | "nao_identificado" | "erro" | "tempo_esgotado"
+  // Na interface, o painel "Modo de demonstração" permite trocar o cenário.
+  SIMULACAO_PADRAO: "identificado",
+  SIMULACAO_ATRASO_MS: 1800,
+};
+</script>
+<script>
+/* js/conteudo.js */
+/*
+ * APOENA — Conteúdo textual
+ * ------------------------------------------------------------------
+ * Todos os textos educativos ficam aqui, separados das telas, para que
+ * a equipe e o arqueólogo possam revisá-los sem mexer na interface.
+ * Trechos marcados com [VALIDAR] precisam de revisão do arqueólogo
+ * antes da publicação.
+ */
+window.APOENA = window.APOENA || {};
+
+window.APOENA.conteudo = {
+  /* ----------------------------------------------------------------
+   * Artefatos que o modelo pode reconhecer.
+   * A CHAVE de cada entrada deve ser IGUAL ao campo "classe" devolvido
+   * pelo modelo de visão computacional (ver servico-identificacao.js).
+   * Ao treinar uma nova classe, acrescente uma entrada aqui.
+   * ---------------------------------------------------------------- */
+  artefatos: {
+    lamina_machado_polida: {
+      nome: "Lâmina de machado polida",
+      // [VALIDAR] textos abaixo
+      oQueE:
+        "Ferramenta de pedra feita por povos indígenas. A rocha era desbastada e depois polida por atrito até formar uma peça lisa, com um lado cortante (o gume) e o lado oposto mais estreito (o talão).",
+      funcao:
+        "Presa a um cabo de madeira, era usada para cortar e trabalhar madeira, por exemplo para derrubar árvores, abrir roças e fazer canoas e utensílios.",
+      materiaPrima:
+        "Rochas duras e de grão fino, como o basalto e o diabásio. A rocha usada varia de região para região.",
+      educativo:
+        "Cada lâmina guarda informações sobre quem a fez e como vivia. Essas informações dependem do lugar exato onde a peça foi encontrada e do que estava ao redor dela. Por isso o objeto deve ficar onde está até ser avaliado por um especialista.",
+      partes: [
+        { termo: "Gume", definicao: "a borda afiada, usada para cortar" },
+        { termo: "Talão", definicao: "a parte oposta ao gume, presa ao cabo" },
+        { termo: "Faces", definicao: "os dois lados largos e polidos da peça" },
+      ],
+    },
+  },
+
+  /* Termo de compromisso (RF01 e RF02). */
+  termo: {
+    titulo: "Termo de compromisso",
+    itens: [
+      "Vou usar o APOENA para conhecer e proteger o patrimônio arqueológico, nunca para vender, trocar ou coletar objetos.",
+      "Entendo que a identificação feita pelo aplicativo é uma estimativa e não substitui a avaliação de um arqueólogo ou do IPHAN.",
+      "Vou evitar retirar ou mexer em objetos que possam ser arqueológicos e vou comunicar o achado ao órgão responsável.",
+      "Sei que a fotografia enviada é usada apenas para a identificação.",
+    ],
+  },
+
+  /* Legislação simplificada (RF09 — apresentada também no fluxo). */
+  legislacao: {
+    lei: "Lei nº 3.924, de 26 de julho de 1961",
+    link: "https://www2.camara.leg.br/legin/fed/lei/1960-1969/lei-3924-26-julho-1961-353715-publicacaooriginal-1-pl.html",
+    pontos: [
+      { artigo: "Art. 1º", texto: "Os sítios arqueológicos e tudo o que há neles ficam sob a guarda e a proteção do poder público. Ser dono do terreno não torna a pessoa dona desses objetos." },
+      { artigo: "Art. 18", texto: "Quem encontrar por acaso um objeto de interesse arqueológico deve comunicar o achado imediatamente ao IPHAN ou a outro órgão autorizado. Até a decisão do órgão, o proprietário ou ocupante do local é responsável por conservar o objeto." },
+      { artigo: "Art. 19", texto: "Deixar de comunicar o achado leva à apreensão do objeto, e quem o encontrou responde pelos danos causados ao patrimônio." },
+    ],
+  },
+
+  /* Comunicação ao IPHAN (RF13). Contatos: confirmar no site oficial. */
+  comunicacao: {
+    orgao: "IPHAN — Instituto do Patrimônio Histórico e Artístico Nacional",
+    site: "https://www.gov.br/iphan/pt-br",
+    passos: [
+      "Procure a Superintendência do IPHAN no seu estado. Os endereços, telefones e e-mails estão no site do IPHAN.",
+      "Envie o resumo da ocorrência gerado pelo APOENA, com a fotografia e a localização.",
+      "Informe se o objeto continua no local ou se foi retirado, e por quê.",
+      "Aguarde a orientação do IPHAN antes de mexer no objeto ou no local.",
+    ],
+  },
+};
+</script>
+<script>
+/* js/servico-identificacao.js */
+/*
+ * APOENA — Serviço de identificação (camada de integração)
+ * ------------------------------------------------------------------
+ * As telas NUNCA falam com o modelo diretamente: elas chamam apenas
+ *
+ *     APOENA.identificacao.identificar(arquivoImagem, { sinal })
+ *
+ * e recebem sempre um objeto no FORMATO NORMALIZADO abaixo. Para trocar
+ * a simulação pelo modelo real, basta implementar a chamada em
+ * `chamarApi` (PASSO 2) e, se o modelo responder em outro formato,
+ * adaptar `normalizarResposta` (PASSO 3). RNF02 do Documento de Visão.
+ *
+ * ------------------------------------------------------------------
+ * CONTRATO DE INTEGRAÇÃO (proposta — validar com a equipe do modelo)
+ * ------------------------------------------------------------------
+ * Requisição
+ *   POST {API_URL}{API_ROTA_IDENTIFICAR}
+ *   Content-Type: multipart/form-data
+ *   Campo "imagem": arquivo da foto (JPEG, PNG, WEBP ou HEIC)
+ *
+ * Resposta 200 (JSON)
+ *   {
+ *     "status": "identificado" | "nao_identificado",
+ *     "classe": "lamina_machado_polida",     // id da classe prevista
+ *     "confianca": 0.87,                     // 0 a 1
+ *     "alternativas": [                      // opcional
+ *       { "classe": "...", "confianca": 0.08 }
+ *     ],
+ *     "modelo": { "nome": "apoena-vc", "versao": "0.1.0" },
+ *     "id_analise": "a1b2c3"                 // opcional, para rastreio
+ *   }
+ *
+ * Erros: HTTP 4xx/5xx com { "erro": "mensagem" } são tratados como
+ * falha de comunicação; a interface oferece nova tentativa.
+ *
+ * ------------------------------------------------------------------
+ * FORMATO NORMALIZADO (o que as telas recebem)
+ * ------------------------------------------------------------------
+ *   {
+ *     status: "identificado" | "nao_identificado" | "erro",
+ *     classe: string | null,
+ *     confianca: number | null,     // 0 a 1
+ *     artefato: objeto de APOENA.conteudo.artefatos | null,
+ *     modelo: { nome, versao } | null,
+ *     simulado: boolean,            // true enquanto não houver modelo
+ *     erro: { tipo: "tempo_esgotado" | "rede" | "servidor" | "cancelado", mensagem } | null
+ *   }
+ */
+(function () {
+  const cfg = () => window.APOENA.config;
+
+  /* Cenário de simulação escolhido no painel de demonstração. */
+  let cenarioSimulado = null;
+  function definirCenarioSimulado(cenario) { cenarioSimulado = cenario; }
+  function obterCenarioSimulado() { return cenarioSimulado || cfg().SIMULACAO_PADRAO; }
+  function estaSimulando() { return cfg().MODO !== "api"; }
+
+  /* Validação local da imagem antes do envio. */
+  function validarImagem(arquivo) {
+    if (!arquivo) return "Escolha ou tire uma foto do objeto.";
+    const tipoOk = cfg().TIPOS_IMAGEM.includes(arquivo.type) || /\.(jpe?g|png|webp|heic|heif)$/i.test(arquivo.name || "");
+    if (!tipoOk) return "Formato não aceito. Envie uma foto em JPG, PNG, WEBP ou HEIC.";
+    if (arquivo.size > cfg().TAMANHO_MAX_MB * 1024 * 1024) {
+      return `A foto tem mais de ${cfg().TAMANHO_MAX_MB} MB. Tire outra foto ou reduza o tamanho da imagem.`;
+    }
+    return null;
+  }
+
+  /* Ponto de entrada usado pelas telas. */
+  async function identificar(arquivo, { sinal } = {}) {
+    try {
+      const bruta = estaSimulando()
+        ? await simularResposta(obterCenarioSimulado(), sinal)
+        : await chamarApi(arquivo, sinal);
+      return normalizarResposta(bruta);
+    } catch (e) {
+      return respostaDeErro(e);
+    }
+  }
+
+  /* ================================================================
+   * >>> INTEGRAÇÃO DO MODELO DE VISÃO COMPUTACIONAL — PASSO 2 <<<
+   * ----------------------------------------------------------------
+   * Chamada real ao serviço do modelo. Já está escrita segundo o
+   * contrato acima; revise rota, campo do arquivo e cabeçalhos quando
+   * a API for definida. Se o modelo rodar no próprio navegador
+   * (ex.: TensorFlow.js ou ONNX Runtime Web), substitua o corpo desta
+   * função pela inferência local e devolva o mesmo JSON do contrato.
+   * ================================================================ */
+  async function chamarApi(arquivo, sinalExterno) {
+    const c = cfg();
+    if (!c.API_URL) throw criarErro("servidor", "O endereço do serviço de identificação não foi configurado.");
+
+    const controle = new AbortController();
+    const limite = setTimeout(() => controle.abort("tempo_esgotado"), c.TEMPO_LIMITE_MS);
+    if (sinalExterno) sinalExterno.addEventListener("abort", () => controle.abort("cancelado"), { once: true });
+
+    const corpo = new FormData();
+    corpo.append("imagem", arquivo, arquivo.name || "foto.jpg");
+
+    const cabecalhos = {};
+    if (c.API_TOKEN) cabecalhos.Authorization = `Bearer ${c.API_TOKEN}`;
+
+    let resposta;
+    try {
+      resposta = await fetch(c.API_URL + c.API_ROTA_IDENTIFICAR, {
+        method: "POST", body: corpo, headers: cabecalhos, signal: controle.signal,
+      });
+    } catch (e) {
+      if (controle.signal.aborted) {
+        throw criarErro(controle.signal.reason === "cancelado" ? "cancelado" : "tempo_esgotado");
+      }
+      throw criarErro("rede");
+    } finally {
+      clearTimeout(limite);
+    }
+    if (!resposta.ok) throw criarErro("servidor", `O serviço respondeu com erro (${resposta.status}).`);
+    return resposta.json();
+  }
+
+  /* ================================================================
+   * >>> INTEGRAÇÃO DO MODELO DE VISÃO COMPUTACIONAL — PASSO 3 <<<
+   * ----------------------------------------------------------------
+   * Converte a resposta do modelo para o formato normalizado. Se a API
+   * devolver outros nomes de campo (ex.: "label", "score"), faça o
+   * mapeamento aqui. O conteúdo exibido ao usuário vem de
+   * APOENA.conteudo.artefatos[classe]: cada nova classe do modelo
+   * precisa de uma entrada lá, validada pelo arqueólogo.
+   * ================================================================ */
+  function normalizarResposta(bruta) {
+    const classe = bruta.classe ?? null;
+    const confianca = typeof bruta.confianca === "number" ? bruta.confianca : null;
+    const artefato = classe ? window.APOENA.conteudo.artefatos[classe] || null : null;
+
+    let status = bruta.status === "identificado" ? "identificado" : "nao_identificado";
+    // Confiança abaixo do limiar ou classe sem conteúdo cadastrado → não identificado.
+    if (status === "identificado" && (!artefato || confianca === null || confianca < cfg().LIMIAR_CONFIANCA)) {
+      status = "nao_identificado";
+    }
+    return {
+      status,
+      classe,
+      confianca,
+      artefato: status === "identificado" ? artefato : null,
+      modelo: bruta.modelo || null,
+      simulado: estaSimulando(),
+      erro: null,
+    };
+  }
+
+  function criarErro(tipo, mensagem) {
+    const e = new Error(mensagem || tipo);
+    e.tipo = tipo;
+    return e;
+  }
+
+  const MENSAGENS_ERRO = {
+    tempo_esgotado: "A análise demorou mais que o esperado. Verifique a conexão e tente de novo.",
+    rede: "Não foi possível falar com o serviço de identificação. Verifique a conexão com a internet e tente de novo.",
+    servidor: "O serviço de identificação está indisponível no momento. Tente de novo em alguns minutos.",
+    cancelado: "Análise cancelada.",
+  };
+
+  function respostaDeErro(e) {
+    const tipo = e && e.tipo ? e.tipo : "servidor";
+    return {
+      status: "erro", classe: null, confianca: null, artefato: null, modelo: null,
+      simulado: estaSimulando(),
+      erro: { tipo, mensagem: (e && e.tipo && e.message !== e.tipo && e.message) || MENSAGENS_ERRO[tipo] },
+    };
+  }
+
+  /* Respostas de exemplo no formato do contrato (somente MODO "simulado"). */
+  function simularResposta(cenario, sinal) {
+    return new Promise((resolver, rejeitar) => {
+      const atraso = cenario === "tempo_esgotado" ? Math.min(cfg().SIMULACAO_ATRASO_MS * 2, 4000) : cfg().SIMULACAO_ATRASO_MS;
+      const t = setTimeout(() => {
+        const modelo = { nome: "simulação", versao: "—" };
+        if (cenario === "erro") return rejeitar(criarErro("servidor"));
+        if (cenario === "tempo_esgotado") return rejeitar(criarErro("tempo_esgotado"));
+        if (cenario === "nao_identificado") {
+          return resolver({ status: "nao_identificado", classe: null, confianca: 0.21, modelo });
+        }
+        resolver({ status: "identificado", classe: "lamina_machado_polida", confianca: 0.87, modelo });
+      }, atraso);
+      if (sinal) sinal.addEventListener("abort", () => { clearTimeout(t); rejeitar(criarErro("cancelado")); }, { once: true });
+    });
+  }
+
+  window.APOENA.identificacao = {
+    identificar, validarImagem, estaSimulando, definirCenarioSimulado, obterCenarioSimulado,
+  };
+})();
+</script>
+<script>
+/* js/app.js */
+/*
+ * APOENA — Interface (telas, navegação e fluxo de identificação)
+ * ------------------------------------------------------------------
+ * As telas usam somente APOENA.identificacao.identificar(...).
+ * Nenhuma tela conhece o modelo de visão computacional: a integração
+ * fica em js/config.js e js/servico-identificacao.js.
+ */
+(function () {
+  const C = window.APOENA.conteudo;
+  const ID = window.APOENA.identificacao;
+  const main = document.getElementById("conteudo");
+  const live = document.getElementById("anuncio");
+
+  /* ---------------- utilidades ---------------- */
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const pct = (v) => `${Math.round((v || 0) * 100)}%`;
+  function anunciar(msg) { live.textContent = ""; setTimeout(() => { live.textContent = msg; }, 50); }
+  function lerSessao(chave) { try { return sessionStorage.getItem(chave); } catch (e) { return null; } }
+  function gravarSessao(chave, valor) { try { sessionStorage.setItem(chave, valor); } catch (e) { /* sem armazenamento: segue sem lembrar */ } }
+  const estrela = '<svg class="estrela" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 3c1.2 6.6 6.4 11.8 13 13-6.6 1.2-11.8 6.4-13 13-1.2-6.6-6.4-11.8-13-13 6.6-1.2 11.8-6.4 13-13z"/></svg>';
+
+  /* ---------------- estado do fluxo ---------------- */
+  const ETAPAS = [
+    { id: "foto", nome: "Foto" },
+    { id: "resultado", nome: "Resultado" },
+    { id: "orientacoes", nome: "Orientações" },
+    { id: "ocorrencia", nome: "Ocorrência" },
+    { id: "comunicar", nome: "Comunicação" },
+  ];
+
+  function estadoInicial() {
+    return {
+      tela: "foto",            // termo | foto | analise | resultado | retirada | ocorrencia | instrucoes | fim
+      foto: null,              // { arquivo, url }
+      erroFoto: null,
+      resultado: null,         // formato normalizado do serviço
+      retirado: null,          // "sim" | "nao"
+      ocorrencia: { lat: null, lon: null, precisao: null, referencia: "", municipio: "", uf: "CE", zona: "", descricao: "" },
+      erros: {},
+      geoStatus: "",
+    };
+  }
+  let fluxo = estadoInicial();
+  let controleAnalise = null;
+
+  function reiniciarFluxo() {
+    if (fluxo.foto) URL.revokeObjectURL(fluxo.foto.url);
+    fluxo = estadoInicial();
+  }
+
+  /* ---------------- rotas (hash simples: #inicio, #identificar...) ---------------- */
+  const ROTAS = { inicio: telaInicio, identificar: telaIdentificar, educacao: telaEducacao, sobre: telaSobre, ajuda: telaAjuda };
+
+  function rotaAtual() {
+    const r = (location.hash || "").replace(/^#/, "");
+    return ROTAS[r] ? r : "inicio";
+  }
+
+  function renderizar({ focar = true } = {}) {
+    const rota = rotaAtual();
+    main.innerHTML = ROTAS[rota]();
+    document.querySelectorAll(".nav a").forEach((a) => {
+      if (a.getAttribute("href") === "#" + rota) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+    const titulo = main.querySelector("h1");
+    document.title = (titulo ? titulo.textContent.trim() + " · " : "") + "APOENA";
+    ligarEventos(rota);
+    if (focar && titulo) { titulo.setAttribute("tabindex", "-1"); titulo.focus({ preventScroll: false }); window.scrollTo(0, 0); }
+  }
+
+  window.addEventListener("hashchange", () => {
+    if (rotaAtual() === "identificar" && fluxo.tela === "fim") reiniciarFluxo();
+    renderizar();
+  });
+
+  /* ================================================================
+   * TELAS INSTITUCIONAIS
+   * ================================================================ */
+  function telaInicio() {
+    return `
+      <section class="masthead">
+        <p class="eyebrow">${estrela}Patrimônio arqueológico</p>
+        <h1>Encontrou uma peça que pode ser arqueológica?</h1>
+        <p class="lede">Envie uma foto do objeto, veja o que ele pode ser e saiba como agir para preservá-lo. O APOENA reconhece, nesta fase, lâminas de machado polidas encontradas no Nordeste.</p>
+        <div class="actions"><a class="btn primary" href="#identificar">Identificar objeto</a></div>
+      </section>
+
+      <div class="notice alerta" role="note">
+        <h2>Não retire o objeto do lugar</h2>
+        <p>O lugar onde a peça está conta parte da história dela. Fotografe sem mexer e comunique o achado ao IPHAN.</p>
+      </div>
+
+      <section class="block" aria-labelledby="como">
+        <div class="block-head"><h2 id="como">Como funciona</h2></div>
+        <ol class="passos">
+          <li><span class="num">1</span><div><strong>Envie uma foto da peça</strong><p class="muted">Fotografe a peça no lugar onde ela está, com boa luz, e envie a imagem.</p></div></li>
+          <li><span class="num">2</span><div><strong>Veja o resultado</strong><p class="muted">O APOENA indica o que a peça pode ser e explica sua função e matéria-prima.</p></div></li>
+          <li><span class="num">3</span><div><strong>Comunique o achado</strong><p class="muted">Registre o local e receba as instruções para avisar o IPHAN.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="block" aria-labelledby="saiba">
+        <div class="block-head"><h2 id="saiba">Saiba mais</h2></div>
+        <div class="links-grid">
+          <a class="link-card" href="#educacao"><strong>Educação patrimonial</strong><span class="muted">O que é patrimônio arqueológico, o que diz a lei e como proteger.</span></a>
+          <a class="link-card" href="#sobre"><strong>Sobre o APOENA</strong><span class="muted">Quem faz o projeto, parceiros e limites da identificação.</span></a>
+        </div>
+      </section>`;
+  }
+
+  function desenhoLamina() {
+    // Esquema simplificado de uma lâmina de machado polida, com as partes nomeadas.
+    return `
+      <figure class="esquema">
+        <svg viewBox="0 0 320 200" role="img" aria-labelledby="esq-t">
+          <title id="esq-t">Esquema de uma lâmina de machado polida: o gume é a borda larga e afiada, embaixo; o talão é a ponta mais estreita, em cima.</title>
+          <path d="M120 22 Q160 12 200 22 L238 168 Q160 190 82 168 Z" class="pedra"/>
+          <path d="M82 168 Q160 190 238 168" class="gume"/>
+          <line x1="200" y1="22" x2="262" y2="22" class="guia"/>
+          <text x="268" y="26" class="rot">Talão</text>
+          <line x1="238" y1="168" x2="262" y2="168" class="guia"/>
+          <text x="268" y="172" class="rot">Gume</text>
+          <line x1="150" y1="96" x2="40" y2="96" class="guia"/>
+          <text x="8" y="88" class="rot">Face</text>
+          <text x="8" y="104" class="rot sub">polida</text>
+        </svg>
+        <figcaption class="small muted">Esquema simplificado. As peças variam em tamanho, formato e cor.</figcaption>
+      </figure>`;
+  }
+
+  function telaEducacao() {
+    const a = C.artefatos.lamina_machado_polida;
+    return `
+      <section class="masthead">
+        <p class="eyebrow">${estrela}Educação patrimonial</p>
+        <h1>Patrimônio arqueológico: o que é e como proteger</h1>
+        <p class="lede">Objetos deixados por povos indígenas no passado contam a história do lugar onde vivemos. Eles pertencem a todos e são protegidos por lei.</p>
+      </section>
+
+      <section class="block" aria-labelledby="ed1">
+        <div class="block-head"><h2 id="ed1">O que é patrimônio arqueológico</h2></div>
+        <p>São os vestígios de grupos humanos do passado: ferramentas de pedra, cerâmica, pinturas em rocha, restos de fogueiras e os lugares onde foram encontrados. No Nordeste, muitos desses vestígios foram deixados por povos indígenas ao longo de milhares de anos.</p>
+      </section>
+
+      <section class="block" aria-labelledby="ed2">
+        <div class="block-head"><h2 id="ed2">Por que não retirar o objeto do lugar</h2></div>
+        <p>Para o arqueólogo, a posição da peça, a camada de terra e os objetos ao redor são tão importantes quanto a peça. Quando ela é retirada, essas informações se perdem e não podem ser recuperadas.</p>
+        <ul class="lista">
+          <li>Não cave, não lave e não limpe a peça.</li>
+          <li>Fotografe no lugar e anote como chegar até ele.</li>
+          <li>Comunique o achado ao IPHAN.</li>
+        </ul>
+      </section>
+
+      <section class="block" aria-labelledby="ed3">
+        <div class="block-head"><h2 id="ed3">O que diz a lei</h2><span class="small muted">${esc(C.legislacao.lei)}</span></div>
+        ${blocoLegislacao()}
+      </section>
+
+      <section class="block" aria-labelledby="ed4">
+        <div class="block-head"><h2 id="ed4">Conheça: ${esc(a.nome.toLowerCase())}</h2></div>
+        <div class="duas-colunas">
+          ${desenhoLamina()}
+          <dl class="info">
+            <div><dt>O que é</dt><dd>${esc(a.oQueE)}</dd></div>
+            <div><dt>Para que servia</dt><dd>${esc(a.funcao)}</dd></div>
+            <div><dt>Matéria-prima</dt><dd>${esc(a.materiaPrima)}</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="block" aria-labelledby="ed5">
+        <div class="block-head"><h2 id="ed5">Como comunicar um achado</h2></div>
+        ${blocoComunicacao()}
+      </section>
+
+      <div class="actions"><a class="btn primary" href="#identificar">Identificar um objeto</a></div>`;
+  }
+
+  function blocoLegislacao() {
+    return `
+      <dl class="lei">
+        ${C.legislacao.pontos.map((p) => `<div><dt>${esc(p.artigo)}</dt><dd>${esc(p.texto)}</dd></div>`).join("")}
+      </dl>
+      <p class="small"><a href="${C.legislacao.link}" target="_blank" rel="noopener">Ler a lei completa (Câmara dos Deputados)</a></p>`;
+  }
+
+  function blocoComunicacao() {
+    return `
+      <ol class="lista numerada">${C.comunicacao.passos.map((p) => `<li>${esc(p)}</li>`).join("")}</ol>
+      <p class="small"><a href="${C.comunicacao.site}" target="_blank" rel="noopener">Site do IPHAN: contatos das superintendências</a></p>`;
+  }
+
+  function telaSobre() {
+    return `
+      <section class="masthead">
+        <p class="eyebrow">${estrela}Sobre</p>
+        <h1>Sobre o APOENA</h1>
+        <p class="lede">Um portal de educação patrimonial com identificação de artefatos por imagem, desenvolvido no LUMIA, da Universidade Federal do Ceará, Campus Quixadá.</p>
+      </section>
+      <section class="block" aria-labelledby="s1">
+        <div class="block-head"><h2 id="s1">Objetivo</h2></div>
+        <p>Ajudar quem encontra um possível artefato arqueológico a saber o que ele pode ser, a não retirá-lo do lugar e a comunicar o achado ao órgão responsável.</p>
+      </section>
+      <section class="block" aria-labelledby="s2">
+        <div class="block-head"><h2 id="s2">Quem participa</h2></div>
+        <ul class="lista">
+          <li>LUMIA — Laboratório de Usabilidade, Mídias e Inteligência Artificial (UFC Campus Quixadá)</li>
+          <li>Arqueólogo consultor, que valida os conteúdos e os resultados</li>
+          <li>Instituto Tembetá</li>
+        </ul>
+      </section>
+      <section class="block" aria-labelledby="s3">
+        <div class="block-head"><h2 id="s3">Limites da identificação</h2></div>
+        <ul class="lista">
+          <li>O resultado é uma estimativa e não substitui a avaliação de um arqueólogo ou do IPHAN.</li>
+          <li>Nesta fase, o APOENA reconhece apenas lâminas de machado polidas encontradas no Nordeste.</li>
+          <li>O APOENA não envia a ocorrência ao IPHAN: ele prepara um resumo para você comunicar.</li>
+        </ul>
+      </section>
+      <section class="block" aria-labelledby="s4">
+        <div class="block-head"><h2 id="s4">Sua foto e seus dados</h2></div>
+        <p>O APOENA não pede nome, telefone nem outros dados pessoais. A foto é usada apenas para a identificação, e o registro da ocorrência pede somente a localização e a descrição do lugar onde a peça foi encontrada. Essas informações ficam no seu aparelho até você decidir enviá-las ao IPHAN.</p>
+      </section>`;
+  }
+
+  function telaAjuda() {
+    return `
+      <section class="masthead">
+        <p class="eyebrow">${estrela}Ajuda</p>
+        <h1>Como usar o APOENA</h1>
+      </section>
+      <div class="faq">
+        <details><summary>Como tirar uma boa foto?</summary><p>Use luz natural, mostre a peça inteira e chegue perto o bastante para ver a superfície. Se puder, coloque uma caneta ou chave ao lado, sem tocar na peça, para dar noção de tamanho.</p></details>
+        <details><summary>O resultado diz que é uma lâmina de machado. E agora?</summary><p>Deixe a peça onde está, siga as orientações da tela e registre a ocorrência. No fim, você recebe um resumo para enviar ao IPHAN.</p></details>
+        <details><summary>Já tirei a peça do lugar. O que faço?</summary><p>Não se preocupe: informe isso no aplicativo. Guarde a peça em local seguro, sem lavar, e anote o local exato onde ela estava.</p></details>
+        <details><summary>O aplicativo não reconheceu o objeto.</summary><p>Tente outra foto, com mais luz. Se ainda assim você achar que é um artefato, registre a ocorrência mesmo sem identificação.</p></details>
+      </div>
+      <div class="actions"><a class="btn primary" href="#identificar">Identificar objeto</a></div>`;
+  }
+
+  /* ================================================================
+   * FLUXO DE IDENTIFICAÇÃO
+   * ================================================================ */
+  function telaIdentificar() {
+    if (!lerSessao("apoena-termo") && fluxo.tela !== "fim") fluxo.tela = "termo";
+    else if (fluxo.tela === "termo") fluxo.tela = "foto";
+    const t = {
+      termo: etapaTermo, foto: etapaFoto, analise: etapaAnalise, resultado: etapaResultado,
+      retirada: etapaRetirada, ocorrencia: etapaOcorrencia, instrucoes: etapaInstrucoes, fim: etapaFim,
+    }[fluxo.tela];
+    return t();
+  }
+
+  function indicador(idEtapa) {
+    const i = ETAPAS.findIndex((e) => e.id === idEtapa);
+    return `
+      <div class="etapas">
+        <p class="etapas-texto">Etapa <strong>${i + 1}</strong> de ${ETAPAS.length}: ${esc(ETAPAS[i].nome)}</p>
+        <div class="meter" role="progressbar" aria-label="Progresso" aria-valuemin="1" aria-valuemax="${ETAPAS.length}" aria-valuenow="${i + 1}" aria-valuetext="Etapa ${i + 1} de ${ETAPAS.length}"><span style="--pct:${((i + 1) / ETAPAS.length) * 100}%"></span></div>
+      </div>`;
+  }
+
+  function avisoSimulacao() {
+    if (!ID.estaSimulando()) return "";
+    const c = ID.obterCenarioSimulado();
+    const op = [["identificado", "Peça identificada"], ["nao_identificado", "Não identificada"], ["erro", "Erro no serviço"], ["tempo_esgotado", "Tempo esgotado"]];
+    return `
+      <div class="notice demo" role="note">
+        <h2>Modo de demonstração</h2>
+        <p class="small">O modelo de visão computacional ainda não está integrado. O resultado mostrado é simulado.</p>
+        <div class="field compacto">
+          <label for="cenario">Resultado simulado</label>
+          <select id="cenario">${op.map(([v, r]) => `<option value="${v}"${v === c ? " selected" : ""}>${r}</option>`).join("")}</select>
+        </div>
+      </div>`;
+  }
+
+  /* --- Termo de compromisso (RF01, RF02) --- */
+  function etapaTermo() {
+    return `
+      <section class="masthead">
+        <p class="eyebrow">${estrela}Antes de começar</p>
+        <h1>${esc(C.termo.titulo)}</h1>
+        <p class="lede">Leia e aceite o termo para usar a identificação e o registro de ocorrências.</p>
+      </section>
+      <form id="form-termo" class="cartao" novalidate>
+        <ul class="lista">${C.termo.itens.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>
+        <div class="check ${fluxo.erros.termo ? "has-error" : ""}">
+          <input type="checkbox" id="aceite" ${fluxo.erros.termo ? 'aria-invalid="true" aria-describedby="aceite-erro"' : ""}>
+          <label for="aceite">Li e concordo com o termo de compromisso.</label>
+        </div>
+        ${fluxo.erros.termo ? `<p class="err" id="aceite-erro">Marque a caixa para aceitar o termo.</p>` : ""}
+        <div class="actions"><button type="submit" class="primary">Aceitar e continuar</button><a class="btn" href="#inicio">Voltar ao início</a></div>
+      </form>`;
+  }
+
+  /* --- Foto (RF03) --- */
+  function etapaFoto() {
+    const f = fluxo.foto;
+    return `
+      ${indicador("foto")}
+      <section class="masthead compacta">
+        <p class="eyebrow">${estrela}Identificar objeto</p>
+        <h1>Envie uma foto do objeto</h1>
+        <p class="lede">Use uma foto tirada no lugar onde a peça está, sem mexer nela.</p>
+      </section>
+      ${avisoSimulacao()}
+      <div class="cartao">
+        <input type="file" id="in-galeria" accept="image/*" class="sr-only" tabindex="-1" aria-hidden="true">
+        ${f ? `
+          <figure class="preview">
+            <img src="${f.url}" alt="Foto do objeto enviada por você">
+            <figcaption class="small muted">${esc(f.arquivo.name || "Foto")} · <span class="data">${(f.arquivo.size / 1024 / 1024).toFixed(1).replace(".", ",")} MB</span></figcaption>
+          </figure>
+          <div class="actions">
+            <button type="button" class="primary" id="analisar">Analisar imagem</button>
+            <button type="button" id="trocar">Trocar foto</button>
+          </div>` : `
+          <div class="envio" id="area-envio">
+            <button type="button" class="primary grande" id="galeria">Escolher imagem</button>
+            <p class="small muted">ou arraste a imagem para cá · JPG, PNG, WEBP ou HEIC, até ${window.APOENA.config.TAMANHO_MAX_MB} MB</p>
+          </div>`}
+        ${fluxo.erroFoto ? `<p class="err" role="alert">${esc(fluxo.erroFoto)}</p>` : ""}
+      </div>
+      <details class="dicas">
+        <summary>Dicas para uma boa foto</summary>
+        <ul class="lista">
+          <li>Use luz natural e evite sombras fortes sobre a peça.</li>
+          <li>Mostre a peça inteira e chegue perto o bastante para ver a superfície.</li>
+          <li>Para dar noção de tamanho, coloque uma caneta ao lado, sem tocar na peça.</li>
+        </ul>
+      </details>`;
+  }
+
+  function receberFoto(arquivo) {
+    const erro = ID.validarImagem(arquivo);
+    if (erro) { fluxo.erroFoto = erro; renderizar({ focar: false }); anunciar(erro); return; }
+    if (fluxo.foto) URL.revokeObjectURL(fluxo.foto.url);
+    fluxo.foto = { arquivo, url: URL.createObjectURL(arquivo) };
+    fluxo.erroFoto = null;
+    renderizar({ focar: false });
+    const b = document.getElementById("analisar");
+    if (b) b.focus();
+    anunciar("Foto carregada. Confira a imagem e escolha Analisar imagem.");
+  }
+
+  /* --- Análise (chama a camada de integração) --- */
+  function etapaAnalise() {
+    return `
+      ${indicador("resultado")}
+      <section class="analise" aria-busy="true">
+        <div class="anel" aria-hidden="true"></div>
+        <h1>Analisando a imagem</h1>
+        <p class="muted" role="status">Isso pode levar alguns segundos.</p>
+        <img class="mini" src="${fluxo.foto.url}" alt="Foto em análise">
+        <button type="button" id="cancelar">Cancelar análise</button>
+      </section>`;
+  }
+
+  async function iniciarAnalise() {
+    fluxo.tela = "analise";
+    renderizar();
+    controleAnalise = new AbortController();
+    // >>> As telas chamam SOMENTE este ponto. A integração com o modelo
+    // >>> está em js/servico-identificacao.js (PASSOS 2 e 3).
+    const r = await ID.identificar(fluxo.foto.arquivo, { sinal: controleAnalise.signal });
+    controleAnalise = null;
+    if (r.erro && r.erro.tipo === "cancelado") { fluxo.tela = "foto"; renderizar(); anunciar("Análise cancelada."); return; }
+    fluxo.resultado = r;
+    fluxo.tela = "resultado";
+    renderizar();
+    anunciar(r.status === "identificado" ? `Resultado: possível ${r.artefato.nome}.` : r.status === "erro" ? "A análise não foi concluída." : "O objeto não foi identificado.");
+  }
+
+  /* --- Resultado (RF04 a RF08) --- */
+  function etapaResultado() {
+    const r = fluxo.resultado;
+    if (r.status === "erro") {
+      return `
+        ${indicador("resultado")}
+        <section class="masthead compacta">
+          <p class="eyebrow">${estrela}Resultado</p>
+          <h1>A análise não foi concluída</h1>
+        </section>
+        <div class="notice erro" role="alert"><p>${esc(r.erro.mensagem)}</p></div>
+        <div class="actions"><button type="button" class="primary" id="tentar">Tentar de novo</button><button type="button" id="outra">Escolher outra foto</button></div>`;
+    }
+    if (r.status === "nao_identificado") {
+      return `
+        ${indicador("resultado")}
+        <section class="masthead compacta">
+          <p class="eyebrow">${estrela}Resultado</p>
+          <h1>Não foi possível identificar o objeto</h1>
+          <p class="lede">Isso pode acontecer por três motivos: a peça pode não ser um artefato, a foto pode não estar nítida, ou o APOENA ainda não reconhece esse tipo de objeto. Nesta fase, ele reconhece apenas lâminas de machado polidas.</p>
+        </section>
+        ${r.simulado ? '<p class="selo">Resultado simulado</p>' : ""}
+        <div class="notice info" role="note">
+          <h2>Ainda acha que pode ser um artefato?</h2>
+          <p>Deixe a peça onde está e registre a ocorrência mesmo assim. Um especialista poderá avaliar.</p>
+        </div>
+        <div class="actions"><button type="button" class="primary" id="outra">Tentar com outra foto</button><button type="button" id="seguir">Registrar mesmo assim</button></div>`;
+    }
+    const a = r.artefato;
+    return `
+      ${indicador("resultado")}
+      <section class="masthead compacta">
+        <p class="eyebrow">${estrela}Resultado da identificação</p>
+        <h1>Possível ${esc(a.nome.toLowerCase())}</h1>
+      </section>
+      <div class="painel">
+        <div class="painel-topo">
+          <img class="mini" src="${fluxo.foto.url}" alt="Foto do objeto analisado">
+          <div class="confianca">
+            <p class="label-caps">Grau de confiança do modelo</p>
+            <p class="valor data">${pct(r.confianca)}</p>
+            <div class="escala" aria-hidden="true"><span style="--pct:${pct(r.confianca)}"></span></div>
+            ${r.simulado ? '<p class="selo">Resultado simulado</p>' : ""}
+          </div>
+        </div>
+        <div class="notice info" role="note">
+          <h2>Esta identificação é uma estimativa</h2>
+          <p>O resultado não substitui a avaliação de um arqueólogo ou do IPHAN.</p>
+        </div>
+        <dl class="info">
+          <div><dt>O que é</dt><dd>${esc(a.oQueE)}</dd></div>
+          <div><dt>Possível função</dt><dd>${esc(a.funcao)}</dd></div>
+          <div><dt>Matéria-prima</dt><dd>${esc(a.materiaPrima)}</dd></div>
+          <div><dt>Por que preservar</dt><dd>${esc(a.educativo)}</dd></div>
+        </dl>
+      </div>
+      <div class="notice alerta" role="note">
+        <h2>Não retire o objeto do local</h2>
+        <p>Retirar a peça do lugar onde ela está apaga informações sobre a sua origem e prejudica a preservação e a interpretação do achado.</p>
+      </div>
+      <div class="actions"><button type="button" class="primary" id="seguir">Continuar: o que fazer agora</button><button type="button" id="outra">Analisar outra foto</button></div>`;
+  }
+
+  /* --- Retirada do objeto (RF10, RF11, RF12) --- */
+  function etapaRetirada() {
+    const e = fluxo.erros;
+    const sim = fluxo.retirado === "sim", nao = fluxo.retirado === "nao";
+    return `
+      ${indicador("orientacoes")}
+      <section class="masthead compacta">
+        <p class="eyebrow">${estrela}Orientações</p>
+        <h1>O que fazer com o objeto</h1>
+      </section>
+      ${resumoErros()}
+      <form id="form-retirada" class="cartao" novalidate>
+        <fieldset class="opcoes ${e.retirado ? "has-error" : ""}" id="grupo-retirado" ${e.retirado ? 'aria-describedby="retirado-erro"' : ""}>
+          <legend>O objeto foi retirado do local onde estava?</legend>
+          ${e.retirado ? `<p class="err" id="retirado-erro">${esc(e.retirado)}</p>` : ""}
+          <label class="opcao"><input type="radio" name="retirado" value="nao" ${nao ? "checked" : ""}><span>Não, continua no local</span></label>
+          <label class="opcao"><input type="radio" name="retirado" value="sim" ${sim ? "checked" : ""}><span>Sim, foi retirado</span></label>
+        </fieldset>
+
+        ${nao ? `
+          <div class="orientacao">
+            <h2>Mantenha o objeto onde está</h2>
+            <ul class="lista">
+              <li>Não cave ao redor, não lave e não limpe a peça.</li>
+              <li>Fotografe o local de longe e de perto, sem mexer em nada.</li>
+              <li>Anote como chegar ao lugar ou use a localização do celular.</li>
+              <li>Comunique o achado ao IPHAN o quanto antes.</li>
+            </ul>
+          </div>` : ""}
+
+        ${sim ? `
+          <div class="orientacao">
+            <h2>Objetos arqueológicos não devem ser removidos do seu contexto</h2>
+            <p>Agora que a peça foi retirada, ajude a preservar o que ainda é possível:</p>
+            <ul class="lista">
+              <li>Guarde a peça em local seguro, sem lavar, colar ou marcar.</li>
+              <li>Não separe a peça de outros objetos encontrados junto com ela.</li>
+              <li>Anote o lugar exato onde ela estava e comunique o IPHAN.</li>
+            </ul>
+            <h3>O que diz a lei</h3>
+            ${blocoLegislacao()}
+          </div>` : ""}
+
+        <div class="actions"><button type="submit" class="primary">Registrar a ocorrência</button><button type="button" id="voltar-resultado">Voltar ao resultado</button></div>
+      </form>`;
+  }
+
+  /* --- Registro da ocorrência --- */
+  const UFS = ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"];
+
+  function campoTexto(id, rotulo, { dica = "", tipo = "input", valor = "", obrig = true } = {}) {
+    const erro = fluxo.erros[id];
+    const desc = [dica ? `${id}-dica` : "", erro ? `${id}-erro` : ""].filter(Boolean).join(" ");
+    const attrs = `id="${id}" ${desc ? `aria-describedby="${desc}"` : ""} ${erro ? 'aria-invalid="true"' : ""} ${obrig ? 'aria-required="true"' : ""}`;
+    return `
+      <div class="field ${tipo === "textarea" ? "full" : ""} ${erro ? "has-error" : ""}">
+        <label for="${id}">${esc(rotulo)}${obrig ? "" : ' <span class="muted">(opcional)</span>'}</label>
+        ${dica ? `<span class="hint" id="${id}-dica">${esc(dica)}</span>` : ""}
+        ${erro ? `<span class="err" id="${id}-erro">${esc(erro)}</span>` : ""}
+        ${tipo === "textarea" ? `<textarea ${attrs}>${esc(valor)}</textarea>` : `<input type="text" ${attrs} value="${esc(valor)}" autocomplete="off">`}
+      </div>`;
+  }
+
+  function etapaOcorrencia() {
+    const o = fluxo.ocorrencia, e = fluxo.erros;
+    const temCoord = o.lat !== null;
+    return `
+      ${indicador("ocorrencia")}
+      <section class="masthead compacta">
+        <p class="eyebrow">${estrela}Registro da ocorrência</p>
+        <h1>Onde o objeto foi encontrado</h1>
+        <p class="lede">Essas informações ajudam o IPHAN a localizar e avaliar o achado.</p>
+      </section>
+      ${resumoErros()}
+      <form id="form-ocorrencia" novalidate>
+        <section class="block" aria-labelledby="h-local">
+          <div class="block-head"><h2 id="h-local">Localização</h2></div>
+          <div class="cartao local ${e.local ? "has-error" : ""}" id="local">
+            ${e.local ? `<p class="err">${esc(e.local)}</p>` : ""}
+            <div class="actions"><button type="button" id="usar-local">${temCoord ? "Atualizar localização" : "Usar minha localização atual"}</button></div>
+            <p class="small" role="status" id="geo-status">${temCoord
+              ? `Localização registrada: <span class="data">${o.lat.toFixed(5)}, ${o.lon.toFixed(5)}</span>${o.precisao ? ` (precisão de ${Math.round(o.precisao)} m)` : ""}`
+              : esc(fluxo.geoStatus || "A localização do celular é a forma mais precisa. Se não for possível, descreva um ponto de referência abaixo.")}</p>
+            ${campoTexto("referencia", "Ponto de referência", { dica: "Ex.: Sítio Boa Vista, 2 km depois da ponte, à direita.", valor: o.referencia, obrig: !temCoord })}
+          </div>
+          <div class="fields">
+            ${campoTexto("municipio", "Município", { valor: o.municipio })}
+            <div class="field">
+              <label for="uf">Estado</label>
+              <select id="uf">${UFS.map((u) => `<option${u === o.uf ? " selected" : ""}>${u}</option>`).join("")}</select>
+            </div>
+          </div>
+          <fieldset class="opcoes linha ${e.zona ? "has-error" : ""}" id="grupo-zona" ${e.zona ? 'aria-describedby="zona-erro"' : ""}>
+            <legend>O local fica em zona</legend>
+            ${e.zona ? `<p class="err" id="zona-erro">${esc(e.zona)}</p>` : ""}
+            <label class="opcao"><input type="radio" name="zona" value="Rural" ${o.zona === "Rural" ? "checked" : ""}><span>Rural</span></label>
+            <label class="opcao"><input type="radio" name="zona" value="Urbana" ${o.zona === "Urbana" ? "checked" : ""}><span>Urbana</span></label>
+          </fieldset>
+        </section>
+
+        <section class="block" aria-labelledby="h-desc">
+          <div class="block-head"><h2 id="h-desc">Descrição do local</h2></div>
+          ${campoTexto("descricao", "Como é o lugar onde o objeto está", { tipo: "textarea", dica: "Ex.: roça de milho perto do açude; terra revirada pelo arado; há cacos de cerâmica por perto.", valor: o.descricao })}
+        </section>
+
+        <div class="toolbar"><button type="button" id="voltar-retirada">Voltar</button><button type="submit" class="primary">Gerar resumo da ocorrência</button></div>
+      </form>`;
+  }
+
+  function resumoErros() {
+    const lista = Object.entries(fluxo.erros);
+    if (!lista.length) return "";
+    const alvo = { retirado: "grupo-retirado", zona: "grupo-zona", local: "local" };
+    return `
+      <div class="notice erro" id="resumo-erros" tabindex="-1" role="alert">
+        <h2>Corrija ${lista.length === 1 ? "o item abaixo" : `os ${lista.length} itens abaixo`}</h2>
+        <ul>${lista.map(([k, m]) => `<li><a href="#${alvo[k] || k}" data-foco="${alvo[k] || k}">${esc(m)}</a></li>`).join("")}</ul>
+      </div>`;
+  }
+
+  function lerOcorrencia() {
+    const o = fluxo.ocorrencia;
+    const v = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ""; };
+    o.referencia = v("referencia"); o.municipio = v("municipio"); o.descricao = v("descricao");
+    o.uf = v("uf") || o.uf;
+    const z = document.querySelector('input[name="zona"]:checked'); o.zona = z ? z.value : "";
+  }
+
+  function validarOcorrencia() {
+    const o = fluxo.ocorrencia, e = {};
+    if (o.lat === null && !o.referencia) e.local = "Informe a localização: use a do celular ou descreva um ponto de referência.";
+    if (!o.municipio) e.municipio = "Informe o município.";
+    if (!o.zona) e.zona = "Escolha se o local fica em zona rural ou urbana.";
+    if (!o.descricao) e.descricao = "Descreva o lugar onde o objeto está.";
+    return e;
+  }
+
+  /* --- Instruções de comunicação (RF13) --- */
+  function textoResumo() {
+    const r = fluxo.resultado, o = fluxo.ocorrencia;
+    const data = new Date().toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" });
+    const resultado = r && r.status === "identificado"
+      ? `Possível ${r.artefato.nome.toLowerCase()} (confiança do modelo: ${pct(r.confianca)}${r.simulado ? ", resultado simulado" : ""})`
+      : "Não identificado pelo aplicativo";
+    const linhas = [
+      "COMUNICAÇÃO DE POSSÍVEL ACHADO ARQUEOLÓGICO — APOENA",
+      `Data do registro: ${data}`,
+      `Identificação: ${resultado}`,
+      `Objeto retirado do local: ${fluxo.retirado === "sim" ? "Sim" : "Não"}`,
+    ];
+    if (o.lat !== null) linhas.push(`Coordenadas: ${o.lat.toFixed(5)}, ${o.lon.toFixed(5)}`);
+    if (o.referencia) linhas.push(`Ponto de referência: ${o.referencia}`);
+    linhas.push(`Município: ${o.municipio} – ${o.uf}`, `Zona: ${o.zona}`, `Descrição do local: ${o.descricao}`);
+    linhas.push("Fotografia: anexar a foto do objeto ao enviar");
+    linhas.push("Observação: a identificação feita pelo APOENA é uma estimativa e não substitui a avaliação de um profissional.");
+    return linhas.join("\n");
+  }
+
+  function etapaInstrucoes() {
+    return `
+      ${indicador("comunicar")}
+      <section class="masthead compacta">
+        <p class="eyebrow">${estrela}Comunicação</p>
+        <h1>Comunique o achado ao IPHAN</h1>
+        <p class="lede">O resumo abaixo reúne o que o IPHAN precisa saber. Copie e envie junto com a foto do objeto.</p>
+      </section>
+      <div class="notice info" role="note">
+        <p>Nesta versão, o APOENA não envia a ocorrência automaticamente. O envio é feito por você, pelos contatos do IPHAN.</p>
+      </div>
+      <section class="block" aria-labelledby="h-resumo">
+        <div class="block-head"><h2 id="h-resumo">Resumo da ocorrência</h2></div>
+        <div class="field full">
+          <label for="resumo" class="sr-only">Texto do resumo</label>
+          <textarea id="resumo" class="resumo" readonly rows="11">${esc(textoResumo())}</textarea>
+        </div>
+        <div class="actions"><button type="button" class="primary" id="copiar">Copiar resumo</button></div>
+      </section>
+      <section class="block" aria-labelledby="h-como">
+        <div class="block-head"><h2 id="h-como">Como comunicar</h2></div>
+        ${blocoComunicacao()}
+      </section>
+      <div class="toolbar"><button type="button" id="voltar-ocorrencia">Revisar ocorrência</button><button type="button" class="primary" id="concluir">Concluir</button></div>`;
+  }
+
+  function etapaFim() {
+    return `
+      <section class="masthead">
+        <p class="eyebrow">${estrela}Concluído</p>
+        <h1>Obrigado por proteger o patrimônio</h1>
+        <p class="lede">Com a sua comunicação, o IPHAN pode avaliar o achado e garantir que ele seja preservado.</p>
+        <div class="actions"><button type="button" class="primary" id="novo">Identificar outro objeto</button><a class="btn" href="#educacao">Ler sobre educação patrimonial</a></div>
+      </section>`;
+  }
+
+  /* ================================================================
+   * EVENTOS
+   * ================================================================ */
+  function irPara(tela) { fluxo.tela = tela; fluxo.erros = {}; renderizar(); }
+  const $ = (id) => document.getElementById(id);
+  const on = (id, ev, fn) => { const el = $(id); if (el) el.addEventListener(ev, fn); };
+
+  function focarErros() {
+    const r = $("resumo-erros");
+    if (r) r.focus();
+    r && r.querySelectorAll("a[data-foco]").forEach((a) => a.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      const alvo = $(a.dataset.foco);
+      const foco = alvo && (alvo.matches("input,textarea,select") ? alvo : alvo.querySelector("input,textarea,select,button"));
+      if (foco) foco.focus();
+    }));
+  }
+
+  function ligarEventos(rota) {
+    if (rota !== "identificar") return;
+    const t = fluxo.tela;
+
+    if (t === "termo") {
+      on("form-termo", "submit", (ev) => {
+        ev.preventDefault();
+        if (!$("aceite").checked) { fluxo.erros = { termo: true }; renderizar({ focar: false }); $("aceite").focus(); return; }
+        gravarSessao("apoena-termo", "1");
+        irPara("foto");
+      });
+    }
+
+    if (t === "foto") {
+      on("cenario", "change", (ev) => ID.definirCenarioSimulado(ev.target.value));
+      on("galeria", "click", () => $("in-galeria").click());
+      on("trocar", "click", () => $("in-galeria").click());
+      on("in-galeria", "change", (ev) => { if (ev.target.files[0]) receberFoto(ev.target.files[0]); });
+      const area = $("area-envio");
+      if (area) {
+        area.addEventListener("dragover", (ev) => { ev.preventDefault(); area.classList.add("arrastando"); });
+        area.addEventListener("dragleave", () => area.classList.remove("arrastando"));
+        area.addEventListener("drop", (ev) => {
+          ev.preventDefault(); area.classList.remove("arrastando");
+          const f = ev.dataTransfer && ev.dataTransfer.files[0];
+          if (f) receberFoto(f);
+        });
+      }
+      on("analisar", "click", iniciarAnalise);
+    }
+
+    if (t === "analise") on("cancelar", "click", () => controleAnalise && controleAnalise.abort());
+
+    if (t === "resultado") {
+      on("tentar", "click", iniciarAnalise);
+      on("outra", "click", () => irPara("foto"));
+      on("seguir", "click", () => irPara("retirada"));
+    }
+
+    if (t === "retirada") {
+      document.querySelectorAll('input[name="retirado"]').forEach((r) => r.addEventListener("change", () => {
+        fluxo.retirado = r.value; fluxo.erros = {};
+        renderizar({ focar: false });
+        document.querySelector(`input[name="retirado"][value="${r.value}"]`).focus();
+      }));
+      on("voltar-resultado", "click", () => irPara("resultado"));
+      on("form-retirada", "submit", (ev) => {
+        ev.preventDefault();
+        const e = {};
+        if (!fluxo.retirado) e.retirado = "Responda se o objeto foi retirado do local.";
+        if (Object.keys(e).length) { fluxo.erros = e; renderizar({ focar: false }); focarErros(); return; }
+        irPara("ocorrencia");
+      });
+    }
+
+    if (t === "ocorrencia") {
+      on("usar-local", "click", () => {
+        lerOcorrencia();
+        if (!("geolocation" in navigator)) { fluxo.geoStatus = "Este aparelho não informa a localização. Descreva um ponto de referência."; renderizar({ focar: false }); return; }
+        $("geo-status").textContent = "Obtendo a localização…";
+        navigator.geolocation.getCurrentPosition(
+          (p) => { Object.assign(fluxo.ocorrencia, { lat: p.coords.latitude, lon: p.coords.longitude, precisao: p.coords.accuracy }); fluxo.geoStatus = ""; delete fluxo.erros.local; renderizar({ focar: false }); anunciar("Localização registrada."); $("usar-local").focus(); },
+          () => { fluxo.geoStatus = "Não foi possível obter a localização. Verifique a permissão do navegador ou descreva um ponto de referência."; renderizar({ focar: false }); $("usar-local").focus(); },
+          { enableHighAccuracy: true, timeout: 15000 }
+        );
+      });
+      on("voltar-retirada", "click", () => { lerOcorrencia(); irPara("retirada"); });
+      on("form-ocorrencia", "submit", (ev) => {
+        ev.preventDefault();
+        lerOcorrencia();
+        const e = validarOcorrencia();
+        if (Object.keys(e).length) { fluxo.erros = e; renderizar({ focar: false }); focarErros(); return; }
+        irPara("instrucoes");
+      });
+    }
+
+    if (t === "instrucoes") {
+      on("copiar", "click", async () => {
+        const txt = $("resumo");
+        try { await navigator.clipboard.writeText(txt.value); anunciar("Resumo copiado."); $("copiar").textContent = "Resumo copiado"; }
+        catch (e) { txt.focus(); txt.select(); anunciar("Texto selecionado. Use o comando copiar do seu aparelho."); }
+      });
+      on("voltar-ocorrencia", "click", () => irPara("ocorrencia"));
+      on("concluir", "click", () => { reiniciarFluxo(); irPara("fim"); });
+    }
+
+    if (t === "fim") on("novo", "click", () => { reiniciarFluxo(); renderizar(); });
+  }
+
+  // "Pular para o conteúdo": foca o conteúdo sem mexer na rota.
+  document.documentElement.lang = "pt-BR";
+  const pular = document.querySelector(".pular");
+  if (pular) pular.addEventListener("click", (ev) => { ev.preventDefault(); main.focus(); });
+
+  renderizar({ focar: false });
+})();
+</script>
+</body>
+</html>
